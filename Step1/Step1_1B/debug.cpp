@@ -24,7 +24,7 @@ using namespace std;
 int main()
 {
 	char *pStr, str[SIZE] = "", newStr[SIZE] = "", ch;
-	int count, i = 0;
+	int count = 0, i = 0; /* Initialize count */
 
 	cout << "Enter a number of mixed characters: ";
 	cin.getline(str, SIZE);
@@ -32,24 +32,25 @@ int main()
 	
 	while (*pStr != '\0')
 	{
-		if (isalnum(*pStr)
+		if (isalnum(*pStr)) { /*Curly brackets */
 			ch = toupper(*pStr);
 			newStr[i++] = ch;
-		
-		if (*pStr = ' ')
+		}
+
+		if (*pStr == ' ')  /* = to == */
 			count++;
 		pStr++;
 	}
 	newStr[i] = '\0';
 
-	cout << strlen(str) - strlen(newStr) << " characters were filtered out,
+	cout << strlen(str) - strlen(newStr) << " characters were filtered out,"
 		<< " out of which " << count << " whitespaces were encountered.\n";
 	
 	int temp;
 
-	for (i = 0; i < strlen(newStr) - 1; i++);
+	for (int i = 0; i < strlen(newStr) - 1; i++)
 	{
-		for (j = i + 1; j < strlen(newStr); j++);
+		for (int j = i + 1; j < strlen(newStr); j++)
 		{
 			if (newStr[j] < newStr[i])	// sorts in alphabetical
 			{						// and numerical order 
@@ -59,7 +60,6 @@ int main()
 			}
 		}
 	}
-	cout << "New sorted string: " << newStr << endl
-	
+	cout << "New sorted string: " << newStr << endl;
 	return 0;
 }

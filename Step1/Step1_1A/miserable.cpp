@@ -1,14 +1,18 @@
-//miserable.cpp
+/**********************************************************************/
+// File:	miserable.cpp
+// Summary: Read and present temperatures from a file.
+// Owner:	No idea
+// -------------------------------------------
+// Log:	2019-03-26 Began refactoring the file	
+//		
+/**********************************************************************/
+
 
 #include <iostream>
 #include <fstream>
 #include <iomanip>
 #include <vector>
 #include <algorithm>
-
-#include "miserable.h"
-
-
 
 using std::cout;
 using std::cin;
@@ -20,7 +24,15 @@ using std::endl;
 using std::vector;
 using std::max;
 
+
+void displayTemperatures(const std::vector<double>& temperatures, int columns);
+void displayTemperatureMinMax(const std::vector<double>& temperatures);
+void displayAvgTemperature(const std::vector<double>& temperatures);
+bool readTemperaturesFromFile(const std::string &filename, std::vector<double>& temperatures);
+
+
 const char* FILENAME = "templog.txt"; /* File containing temperatures */
+const int COLUMNS_DISPLAY_TEMPS = 6;  /* Number of columns when displaying temperatures */
 
 int main()
 {
@@ -36,7 +48,6 @@ int main()
 		return -1; /* Multiple returns, but I think it's fine sometimes */
 	}
 
-
 	cout << "\n\nTemperature Statistics\n----------------------\n\nReading logged values for processing and presentation...\n\nPress Enter for menu: ";
 	cin.get();
 
@@ -48,9 +59,10 @@ int main()
 		cin.get(choice);
 		cin.get(); /* Press enter to continue prompt */
 
+		/* Handle user input */
 		switch (choice) {
 		case '1':
-			displayTemperature(temperatures);
+			displayTemperatures(temperatures, COLUMNS_DISPLAY_TEMPS);
 			break;
 		case '2':
 			displayTemperatureMinMax(temperatures);
@@ -101,19 +113,18 @@ void displayTemperatureMinMax(const vector<double>& temperatures)
 	cout << "\nMinimum temperature: " << min << " degrees Celcius\n";
 }
 
-void displayTemperature(const vector<double>& temperatures)
+void displayTemperatures(const vector<double>& temperatures, int columns)
 {
 	cout << "\nDisplaying the latest 24 temperature values:\n\n";
 
 	for (int i = 0; i < temperatures.size(); i++) {
 		double temperature = temperatures[i];
-		if (i % 6 == 0) {
+		if (i % columns == 0) { 
 			cout << endl;
 		}
 		cout << fixed << setprecision(2) << setw(8) << temperature;
 	}
 }
-
 
 bool readTemperaturesFromFile(const std::string &filename, std::vector<double>& temperatures)
 {

@@ -6,4 +6,4 @@ void displayTemperatureMinMax(const std::vector<double>& temperatures);
 
 void displayAvgTemperature(const std::vector<double>& temperatures) ;
 
-std::vector<double> readTemperaturesFromFile(const std::string &filename);
+bool readTemperaturesFromFile(const std::string &filename, std::vector<double>& temperatures);

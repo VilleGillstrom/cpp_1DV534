@@ -20,9 +20,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="templog.txt" />
-  </ItemGroup>
-  <ItemGroup>
     <ClInclude Include="miserable.h">
       <Filter>Header Files</Filter>
     </ClInclude>

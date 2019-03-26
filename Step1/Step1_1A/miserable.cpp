@@ -4,6 +4,8 @@
 #include <fstream>
 #include <iomanip>
 #include <vector>
+#include <algorithm>
+
 #include "miserable.h"
 
 
@@ -16,15 +18,24 @@ using std::setprecision;
 using std::setw;
 using std::endl;
 using std::vector;
+using std::max;
+
+const char* FILENAME = "templog.txt"; /* File containing temperatures */
 
 int main()
 {
 	bool isRunning = true; /* Determines when to exit main loop (terminates application) */
-	double temperature;
+	char choice;		   /* Store user input */
 
-	char choice;
+	vector<double> temperatures;
 
-	vector<double> temperatures = readTemperaturesFromFile("templog.txt"); /* Read file only once to avoid slow file reads */
+	/* Read temperatures */
+	if (!readTemperaturesFromFile(FILENAME, temperatures)) { 
+		cout << "\n\nUnable to read file: " << std::strerror(errno) << "\nTerminating the program. ";
+		cin.get();
+		return -1; /* Multiple returns, but I think it's fine sometimes */
+	}
+
 
 	cout << "\n\nTemperature Statistics\n----------------------\n\nReading logged values for processing and presentation...\n\nPress Enter for menu: ";
 	cin.get();
@@ -38,18 +49,21 @@ int main()
 		cin.get(); /* Press enter to continue prompt */
 
 		switch (choice) {
-		case '1': 
+		case '1':
 			displayTemperature(temperatures);
-			break;       
-		case '2': 
+			break;
+		case '2':
 			displayTemperatureMinMax(temperatures);
 			break;
 		case '3':
 			displayAvgTemperature(temperatures);
 			break;
-		default:
-			isRunning = 0;
+		case '4':
+			isRunning = false; /* Exit program */
 			cout << "\n\nTerminating the program.";
+			break;
+		default:
+			cout << "\n\nUnknown input!";
 			break;
 		}
 		cout << "\n\nPress Enter to continue:";
@@ -60,13 +74,11 @@ int main()
 
 void displayAvgTemperature(const vector<double>& temperatures)
 {
-
 	/* Sum temperatures */
 	double temperatureTotal = 0.0;
 	for (double t : temperatures) {
 		temperatureTotal += t;
 	}
-
 
 	double temperatureAvg = temperatureTotal / temperatures.size();
 
@@ -79,48 +91,38 @@ void displayAvgTemperature(const vector<double>& temperatures)
 
 void displayTemperatureMinMax(const vector<double>& temperatures)
 {
-	double temperature;
-	cout << "\nCalculating the maximum and minimum temperature...\n";
-	double max = 0, min = 0;
-	ifstream fil("templog.txt");
-	fil >> temperature;
-	max = min = temperature;
-	for (int i = 1; i < 24; i++)
-	{
-		fil >> temperature;
-		if (temperature > max)
-			max = temperature;
-		if (temperature < min)
-			min = temperature;
-	}
-	fil.close();
+	const auto minmax = std::minmax_element(begin(temperatures), end(temperatures));
+	double min = *minmax.first;
+	double max = *minmax.second;
 
 	/* Display result */
+	cout << "\nCalculating the maximum and minimum temperature...\n";
 	cout << "\nMaximum temperature: " << fixed << setprecision(2) << max << " degrees Celcius\n";
 	cout << "\nMinimum temperature: " << min << " degrees Celcius\n";
 }
 
 void displayTemperature(const vector<double>& temperatures)
 {
-	double temperature;
 	cout << "\nDisplaying the latest 24 temperature values:\n\n";
-	ifstream fil("templog.txt");
-	for (int i = 0; i < 24; i++)
-	{
-		if (i % 6 == 0)
+
+	for (int i = 0; i < temperatures.size(); i++) {
+		double temperature = temperatures[i];
+		if (i % 6 == 0) {
 			cout << endl;
-		fil >> temperature;
+		}
 		cout << fixed << setprecision(2) << setw(8) << temperature;
 	}
-	fil.close();
 }
 
 
-vector<double> readTemperaturesFromFile(const std::string &filename)
+bool readTemperaturesFromFile(const std::string &filename, std::vector<double>& temperatures)
 {
 	ifstream file(filename);
-	double temperature = 0.0; /* Temprarily store temperatures read from file */
-	vector<double> temperatures;
+	if (file.fail()) {
+		return false; /* Unable to open file */
+	}
+
+	double temperature; /* Temprarily store temperatures read from file */
 
 	/* Read the file content into temperatures*/
 	while (file >> temperature) {
@@ -128,5 +130,5 @@ vector<double> readTemperaturesFromFile(const std::string &filename)
 	}
 
 	file.close();
-	return temperatures;
+	return true;
 }

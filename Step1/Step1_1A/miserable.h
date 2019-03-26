@@ -1,7 +1,9 @@
 #pragma once
 
-void displayTemperature(double &t);
+void displayTemperature(const std::vector<double>& temperatures);
 
-void displayTemperatureMinMax(double &temperature);
+void displayTemperatureMinMax(const std::vector<double>& temperatures);
 
-void displayAvgTemperature(double &s, double &temperature, double &m);
+void displayAvgTemperature(const std::vector<double>& temperatures) ;
+
+std::vector<double> readTemperaturesFromFile(const std::string &filename);

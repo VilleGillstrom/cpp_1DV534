@@ -7,19 +7,21 @@ using namespace std;
 
 int main()
 {
-	int a = 1;
-	double t, s, m;
+	bool isRunning = true; /* Determines when to exit main loop (terminates application) */
+	double t;
+	double s;
+	double m;
 	char b;
 
 	cout << "\n\nTemperature Statistics\n----------------------\n\nReading logged values for processing and presentation...\n\nPress Enter for menu: ";
 	cin.get();
 
-	while (a)
+	while (isRunning)
 	{
 		system("cls");
 		cout << "\n\nMENU\n----\n\n1. Display temperature values\n2. View maximum and minimum temperatures\n3. View average temperature\n4. Quit\n\nMake your choice: ";
 		cin.get(b);
-		cin.get();
+		cin.get(); /* Press enter to continue prompt */
 
 		if (b == '1')
 		{
@@ -73,7 +75,7 @@ int main()
 
 		else
 		{
-			a = 0;
+			isRunning = 0;
 			cout << "\n\nTerminating the program.";
 		}
 		cout << "\n\nPress Enter to continue:";

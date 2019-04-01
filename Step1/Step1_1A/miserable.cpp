@@ -39,7 +39,7 @@ int main()
 	bool isRunning = true; /* Determines when to exit main loop (terminates application) */
 	char choice;		   /* Store user input */
 
-	vector<double> temperatures;
+	vector<double> temperatures; /* Container for the temperatures read from file */
 
 	/* Read temperatures */
 	if (!readTemperaturesFromFile(FILENAME, temperatures)) { 
@@ -96,8 +96,7 @@ void displayAvgTemperature(const vector<double>& temperatures)
 
 	/* Display result */
 	cout << "\nCalculating average temperature...\n";
-	cout << "\nAverage temperature: ";
-	cout << fixed << setprecision(2) << temperatureAvg << " degrees Celcius\n";
+	cout << fixed << setprecision(2) << "\nAverage temperature: " <<  temperatureAvg << " degrees Celcius\n";
 }
 
 
@@ -109,7 +108,7 @@ void displayTemperatureMinMax(const vector<double>& temperatures)
 
 	/* Display result */
 	cout << "\nCalculating the maximum and minimum temperature...\n";
-	cout << "\nMaximum temperature: " << fixed << setprecision(2) << max << " degrees Celcius\n";
+	cout << fixed << setprecision(2) <<  "\nMaximum temperature: " << max << " degrees Celcius\n";
 	cout << "\nMinimum temperature: " << min << " degrees Celcius\n";
 }
 
@@ -135,7 +134,7 @@ bool readTemperaturesFromFile(const std::string &filename, std::vector<double>& 
 
 	double temperature; /* Temprarily store temperatures read from file */
 
-	/* Read the file content into temperatures*/
+	/* Read file content into temperatures*/
 	while (file >> temperature) {
 		temperatures.push_back(temperature);
 	}

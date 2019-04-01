@@ -6,12 +6,14 @@
 
 using namespace std;
 
-TemperaturePrinter::TemperaturePrinter()
+TemperaturePrinter::TemperaturePrinter():
+	mColumnsDisplayTemps(6)
 {
 }
 
 TemperaturePrinter::TemperaturePrinter(TemperatureLog temperatureReading) :
-	mTemperatureReading(temperatureReading)
+	mTemperatureLog(temperatureReading),
+	mColumnsDisplayTemps(6)
 {
 }
 
@@ -21,9 +23,9 @@ TemperaturePrinter::~TemperaturePrinter()
 }
 
 
-void TemperaturePrinter::displayAvgTemperature()
+void TemperaturePrinter::displayAvgTemperature() const
 {
-	double temperatureAvg = mTemperatureReading.getAvgTemperature();
+	double temperatureAvg = mTemperatureLog.avgTemperature();
 	
 	/* Display result */
 	cout << "\nCalculating average temperature...\n";
@@ -31,10 +33,10 @@ void TemperaturePrinter::displayAvgTemperature()
 }
 
 
-void TemperaturePrinter::displayTemperatureMinMax()
+void TemperaturePrinter::displayTemperatureMinMax() const
 {
-	double min = mTemperatureReading.getMinTemperature();
-	double max = mTemperatureReading.getMaxTemperature();
+	double min = mTemperatureLog.minTemperature();
+	double max = mTemperatureLog.maxTemperature();
 
 	/* Display result */
 	cout << "\nCalculating the maximum and minimum temperature...\n";
@@ -42,13 +44,13 @@ void TemperaturePrinter::displayTemperatureMinMax()
 	cout << "\nMinimum temperature: " << min << " degrees Celcius\n";
 }
 
-void TemperaturePrinter::displayTemperatures( int columns)
+void TemperaturePrinter::displayTemperatures() const
 {
 	cout << "\nDisplaying the latest 24 temperature values:\n\n";
 
-	for (int i = 0; i < mTemperatureReading.numberOfReadings(); i++) {
-		double temperature = mTemperatureReading.getTemperature(i);
-		if (i % columns == 0) {
+	for (int i = 0; i < mTemperatureLog.numberOfReadings(); i++) {
+		double temperature = mTemperatureLog.getTemperature(i);
+		if (i % mColumnsDisplayTemps == 0) {
 			cout << endl;
 		}
 		cout << fixed << setprecision(2) << setw(8) << temperature;

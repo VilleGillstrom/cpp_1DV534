@@ -15,21 +15,24 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="TemperaturePrinter.cpp">
+    <ClCompile Include="MainTest.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="TemperatureLog.cpp">
+    <ClCompile Include="CashRegister.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="App.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="TemperaturePrinter.h">
+    <ClInclude Include="CashRegister.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="TemperatureLog.h">
+    <ClInclude Include="App.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

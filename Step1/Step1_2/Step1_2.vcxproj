@@ -18,19 +18,10 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="TemperatureLog.h" />
-    <ClInclude Include="TemperaturePrinter.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="App.cpp" />
-    <ClCompile Include="TemperatureLog.cpp" />
-    <ClCompile Include="TemperaturePrinter.cpp" />
-  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
-    <ProjectGuid>{B11F6973-3DB3-4CB2-A17A-E18DABCCD444}</ProjectGuid>
-    <RootNamespace>Step11C</RootNamespace>
+    <ProjectGuid>{B678584C-AF7F-415D-9C53-D5DAF590EF66}</ProjectGuid>
+    <RootNamespace>Step12</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -123,6 +114,16 @@
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
   </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="App.cpp" />
+    <ClCompile Include="CashRegister.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="MainTest.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="App.h" />
+    <ClInclude Include="CashRegister.h" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

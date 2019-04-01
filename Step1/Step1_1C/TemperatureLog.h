@@ -7,6 +7,7 @@ public:
 	TemperatureLog();
 	~TemperatureLog();
 
+	/* Load temperatures from file */
 	bool loadReadingsFromFile(const std::string& filename);
 
 	/* Get average temperature */
@@ -26,6 +27,8 @@ public:
 
 
 private:
+
+	/* Loaded temperatures */
 	std::vector<double> mTemperatures;
 };
 

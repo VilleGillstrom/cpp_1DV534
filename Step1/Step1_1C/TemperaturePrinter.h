@@ -1,22 +1,23 @@
 #pragma once
 
 #include <vector>
-#include "TemperatureReading.h"
+#include "TemperatureLog.h"
 
 class TemperaturePrinter
 {
 public:
 	TemperaturePrinter();
-	TemperaturePrinter(TemperatureLog temperatureReading);
+	TemperaturePrinter(TemperatureLog temperatureLog);
 	~TemperaturePrinter();
 
 
 	/* Display the average temperature in */
-	void displayAvgTemperature();
-	void displayTemperatureMinMax();
-	void displayTemperatures(int columns);
+	void displayAvgTemperature() const;
+	void displayTemperatureMinMax() const;
+	void displayTemperatures() const;
 
 private:
-	TemperatureLog mTemperatureReading;
+	TemperatureLog mTemperatureLog;
+	int mColumnsDisplayTemps; /* Number of columns when calling displayTemperatures() */
 };
 

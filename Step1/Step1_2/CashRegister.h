@@ -1,11 +1,11 @@
 #pragma once
 
 #include <fstream>
-using std::ofstream;
 
 
 class CashRegister
 {
+	
 public:
 
 	CashRegister(const char* fileName, int nrOfCategories); // constructor
@@ -23,7 +23,7 @@ public:
 	
 
 private:
-	ofstream _file;		   // Here will registered items be saved
+	std::ofstream _file;		   // Here will registered items be saved
 	int _nrOfCategories;   // Products are organized in categories
 	double* _categorySums; // The vector will contain respective sum of each
 						   // category sold during the day

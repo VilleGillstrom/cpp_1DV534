@@ -7,6 +7,8 @@ using std::memcpy;
 using std::ios;
 using std::move;
 using ATL::CTime;
+using std::string;
+using std::ofstream;
 
 CashRegister::CashRegister(const char* fileName, int nrOfCategories) : _nrOfCategories(nrOfCategories)
 {
@@ -16,10 +18,10 @@ CashRegister::CashRegister(const char* fileName, int nrOfCategories) : _nrOfCate
 	_file.open(fileName, ofstream::out | ofstream::app); /* Open for writing appendingly */
 
 	/* File opened succesfully, add title*/
-	const char* date = currentDate().c_str();
-	const char* day = currentDate().c_str();
-	const char* time = currentDate().c_str();
-	_file << ">>>> > Register opened : "<< date << " " << day << " at " << time << "\n";
+	string date = currentDate();
+	string day = currentDay();
+	string time = currentTime();
+	_file << ">>>>> Register opened : " << date.c_str() << " " << day.c_str() << " at " << time.c_str() << std::endl;
 }
 
 
@@ -37,11 +39,11 @@ CashRegister::CashRegister(CashRegister && OldCashRegister) :
 CashRegister::~CashRegister()
 {
 	/* Write last info to file */
-	const char* date = currentDate().c_str();
-	const char* day = currentDate().c_str();
-	const char* time = currentDate().c_str();
+	string date = currentDate();
+	string day = currentDay();
+	string time = currentTime();
 
-	std::cout << ">>>>> Register closed: " << date << " " << day << " at " << time << "\n";
+	_file << ">>>>> Register closed: " << date.c_str() << " " << day.c_str() << " at " << time.c_str() << std::endl;
 
 	_file << "Totals for the last opening period : \n"
 		<< "----------------------------------------\n";
@@ -53,7 +55,7 @@ CashRegister::~CashRegister()
 		sum += _categorySums[i];
 	}
 	_file << "Total sales within all categories : " << sum << "Kr.\n";
-	_file << "==========================================================================\n";
+	_file << "==========================================================================" << std::endl;
 
 	/* Return resources */
 	delete _categorySums; 
@@ -77,7 +79,7 @@ bool CashRegister::registerItem(int category, const char * articleName, double a
 
 bool CashRegister::validCategory(int category)
 {
-	return (category > 0 || category <= _nrOfCategories); /* Assuming categories are 1 to _nrOfCategories (including) */
+	return (category > 0 && category <= _nrOfCategories); /* Assuming categories are 1 to _nrOfCategories (including) */
 }
 
 void CashRegister::registerItemWrite(int category, const char * articleName, double amount)

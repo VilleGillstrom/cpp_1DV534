@@ -1,75 +1,12 @@
->>>> > Register opened : 2018 - 04 - 02 Monday at 17 : 45>>>> > Register opened : 2018 - 04 - 02 Monday at 17 : 45>>>> > Register opened : 2018 - 04 - 02 Monday at 17 : 45>>>> > Register opened : 2018 - 04 - 02 Monday at 17 : 45>>>> > Register opened : 2018 - 04 - 02 Monday at 17 : 45>>>> > Register opened : 2018 - 04 - 02 Monday at 17 : 45>>>> > Register opened : 2018 - 04 - 02 Monday at 17 : 45>>>> > Register opened : 2018 - 04 - 02 Monday at 17 : 45>>>> > Register opened : 2018 - 04 - 02 Monday at 17 : 4517:45 : Cat. 1 : 18 Kr.[fopo]
+>>>> > Register opened : 2019-04-07 Sunday at 04:04
+>>>>> Register closed: 2019-04-07 Sunday at 04:04
 Totals for the last opening period : 
 ----------------------------------------
-Category 1 : 321 Kr.
-Category 2 : 1.60219e-306 Kr.
-Category 3 : 1.78022e-306 Kr.
-Category 4 : 4.60417e-303 Kr.
-Category 5 : 9.097e-310 Kr.
-Total sales within all categories : 200Kr.
-==========================================================================
->>>> > Register opened : 2018 - 04 - 02 Monday at 17 : 4517:45 : Cat. 1 : 18 Kr.[1]
-Totals for the last opening period : 
-----------------------------------------
-Category 1 : -6.27744e+66 Kr.
-Category 2 : -6.27744e+66 Kr.
-Category 3 : -6.27744e+66 Kr.
-Category 4 : -6.27744e+66 Kr.
-Category 5 : -6.27744e+66 Kr.
-Total sales within all categories : 200Kr.
-==========================================================================
->>>> > Register opened : 2018 - 04 - 02 Monday at 17 : 45HELLO WORLD!!!!!17:45 : Cat. 1 : 18 Kr.[1]
-Totals for the last opening period : 
-----------------------------------------
-Category 1 : -6.27744e+66 Kr.
-Category 2 : -6.27744e+66 Kr.
-Category 3 : -6.27744e+66 Kr.
-Category 4 : -6.27744e+66 Kr.
-Category 5 : -6.27744e+66 Kr.
-Total sales within all categories : 200Kr.
-==========================================================================
->>>> > Register opened : 2018 - 04 - 02 Monday at 17 : 45
-17:45 : Cat. 1 : 18 Kr.[foo]
-Totals for the last opening period : 
-----------------------------------------
-Category 1 : -6.27744e+66 Kr.
-Category 2 : -6.27744e+66 Kr.
-Category 3 : -6.27744e+66 Kr.
-Category 4 : -6.27744e+66 Kr.
-Category 5 : -6.27744e+66 Kr.
-Total sales within all categories : 200Kr.
-==========================================================================
->>>> > Register opened : 2018 - 04 - 02 Monday at 17 : 45
-19:04 : Cat. 2 : 31 Kr.[foo]
-Totals for the last opening period : 
-----------------------------------------
-Category 1 : -6.27744e+66 Kr.
-Category 2 : -6.27744e+66 Kr.
-Category 3 : -6.27744e+66 Kr.
-Category 4 : -6.27744e+66 Kr.
-Category 5 : -6.27744e+66 Kr.
-Total sales within all categories : -3.13872e+67Kr.
-==========================================================================
->>>> > Register opened : 2018 - 04 - 02 Monday at 17 : 45
-19:04 : Cat. 3 : 123123 Kr.[foo]
-Totals for the last opening period : 
-----------------------------------------
-Category 1 : -6.27744e+66 Kr.
-Category 2 : -6.27744e+66 Kr.
-Category 3 : -6.27744e+66 Kr.
-Category 4 : -6.27744e+66 Kr.
-Category 5 : -6.27744e+66 Kr.
-Total sales within all categories : -3.13872e+67Kr.
-==========================================================================
->>>> > Register opened : 2018 - 04 - 02 Monday at 17 : 45
-19:04 : Cat. 1 : 4123 Kr.[foola]
-19:04 : Cat. 3 : 341 Kr.[oooo]
-Totals for the last opening period : 
-----------------------------------------
-Category 1 : 4123 Kr.
+Category 1 : 0 Kr.
 Category 2 : 0 Kr.
-Category 3 : 341 Kr.
+Category 3 : 0 Kr.
 Category 4 : 0 Kr.
 Category 5 : 0 Kr.
-Total sales within all categories : 4464Kr.
+Total sales within all categories : 0Kr.
 ==========================================================================
+>>>>> Register opened : 2019-04-07 Sunday at 04:04

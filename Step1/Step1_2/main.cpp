@@ -1,12 +1,7 @@
-#include <atltime.h>
-#include <iostream>
 #include "CashRegister.h"
 #include "App.h"
 
 using std::move;
-
-using ATL::CTime;
-
 
 int main() {
 	CashRegister cash("Register.txt", 5);

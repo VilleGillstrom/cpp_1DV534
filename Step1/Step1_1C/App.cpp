@@ -25,9 +25,9 @@ public:
 			cout << "\n\nMENU\n----\n\n1. Display temperature values\n2. View maximum and minimum temperatures\n3. View average temperature\n4. Quit\n\nMake your choice: ";
 
 			cin.get(choice);
-			cin.get(); /* Press enter to continue prompt */
+			cin.get(); /* Press enter to continue prompt */S
 
-					   /* Handle user input */
+			/* Handle user input */
 			switch (choice) {
 			case '1':
 				mTemperaturePrinter.displayTemperatures();

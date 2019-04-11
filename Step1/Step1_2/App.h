@@ -12,6 +12,11 @@ public:
 
 private:
 	bool handleUserInputItem(); /* Handle user input for registering an item */
+
+	/* Get info from user */
+	bool FetchPrice(double &price);
+	bool FetchCategory(int &category);
+	bool FetchArticleName(char* articleName);
 	CashRegister mCash;
 };
 

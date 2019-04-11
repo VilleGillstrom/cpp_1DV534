@@ -55,37 +55,48 @@ bool App::handleUserInputItem() {
 	cin.clear();
 
 	/* Get and validate the category */
+	if (FetchCategory(category) && FetchArticleName(articleName) && FetchPrice(price)) {
+		std::cout << "Registering: " << category << " " << articleName << " " << price << "\n";
+		mCash.registerItem(category, articleName, price);
+	}
+	else {
+		cin.get();
+	}
+
+
+
+	return success;
+}
+
+bool App::FetchPrice(double &price)
+{
+	cout << "Price: ";
+	cin >> price;
+	if (cin.fail()) {
+		std::cout << "Bad price\n";
+		return false;
+	}
+	return true;
+}
+
+bool App::FetchCategory(int &category)
+{
 	cout << "Category: ";
 	cin >> category;
 	if (cin.fail() || !mCash.validCategory(category)) {
 		std::cout << "Bad category\n";
-		success = false;
+		return false;
 	}
+	return true;
+}
 
-	/* Get article name */
+bool App::FetchArticleName(char *articleName)
+{
 	cout << "Article Name: ";
 	cin >> articleName;
-	if (success && cin.fail()) {
+	if (cin.fail()) {
 		std::cout << "Bad article name\n";
-		success = false;
+		return  false;
 	}
-
-	/* Get price */
-	cout << "Price: ";
-	cin >> price;
-	if (success && cin.fail()) {
-		std::cout << "Bad price\n";
-		success = false;
-	}
-
-	if (success) {
-		std::cout << "Registering: " << category << " " << articleName << " " << price << "\n";
-	}
-
-	/* Clean cin (i think) */
-	cin.clear();
-	cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-
-	mCash.registerItem(category, articleName, price);
-	return success;
+	return true;
 }

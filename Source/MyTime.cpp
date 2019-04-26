@@ -107,7 +107,7 @@ istream& operator >> ( istream& is, MyTime& t )
 	char stg[50];
 	char *p;
 
-	cout << "Mata in klockslaget p† formen tt:mm eller tt:mm:ss : ";
+	cout << "Mata in klockslaget pEformen tt:mm eller tt:mm:ss : ";
 	is   >> stg;
 
 	p = strtok(stg," :,.;");

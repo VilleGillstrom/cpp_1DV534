@@ -21,6 +21,7 @@ App::~App()
 	delete stopwatch;
 }
 
+
 void App::run()
 {
 	Stopwatch* stopwatch = new Stopwatch();

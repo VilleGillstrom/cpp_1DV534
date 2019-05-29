@@ -6,7 +6,8 @@ OptionsMenu("Main Menu", true),
 _collectionRegistry((collectionRegistry)),
 _addItemMenu( _collectionRegistry ),
 _showItemByIdMenu(_collectionRegistry),
-_showItemsByTypeMenu(_collectionRegistry)
+_showItemsByTypeMenu(_collectionRegistry),
+_searchItemsMenu(_collectionRegistry)
 {
 
 	addMenuOption("1",
@@ -26,7 +27,7 @@ _showItemsByTypeMenu(_collectionRegistry)
 	addMenuOption("3",
 		{
 		"Show all by type",
-			std::bind(&MainMenu::showShowItemByTypeMenuFunc, this )
+			std::bind(&ShowItemsByTypeMenu::show, _showItemsByTypeMenu)
 	}
 	);
 
@@ -48,9 +49,11 @@ _showItemsByTypeMenu(_collectionRegistry)
 
 		}
 	);
+
 	addMenuOption("6", 
 		{
 		"search for item",
+			std::bind(&SearchItemMenu::show, _searchItemsMenu)
 
 	}
 	);
@@ -58,8 +61,8 @@ _showItemsByTypeMenu(_collectionRegistry)
 	
 	addMenuOption("7",
 		{
-			"sort items",
-			std::bind(&CollectionRegistry::sortItems, _collectionRegistry)
+			"sort items"
+			//std::bind(&MainMenu::showortItems, _collectionRegistry)
 
 		}
 	);

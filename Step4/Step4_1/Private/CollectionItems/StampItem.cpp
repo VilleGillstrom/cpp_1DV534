@@ -8,7 +8,7 @@ StampItem::StampItem() : StampItem("", "", 0000)
 }
 
 StampItem::StampItem(const std::string& title, const std::string& note, int releaseYear) :
-	_title(title), _note(note), _releaseYear(releaseYear), BaseCollectionItem(getItemType())
+	 _note(note), _releaseYear(releaseYear), BaseCollectionItem(getItemType(), title)
 {
 }
 
@@ -52,7 +52,7 @@ void StampItem::setProperties(std::vector<PropertyString> propertyString)
 	}
 }
 
-bool StampItem::isSameAs(BaseCollectionItem* item) const
+bool StampItem::equalTo(BaseCollectionItem* item) const
 {
 	if (StampItem * mi = dynamic_cast<StampItem*>(item))
 	{
@@ -63,19 +63,13 @@ bool StampItem::isSameAs(BaseCollectionItem* item) const
 
 bool StampItem::isSameAs(StampItem* item) const
 {
-	if (StampItem * mi = dynamic_cast<StampItem*>(item))
-	{
-		return isSameAs(item);
-	}
-	return false;
+	auto cond = _releaseYear == item->releaseYear();
+	auto cond1 = _note == item->note();
+	auto cond2 = _title == item->title();
+	return cond && cond1 && cond2;
 }
 
 
-
-void StampItem::setTitle(const std::string& title)
-{
-	_title = title;
-}
 
 void StampItem::setNote(const std::string& note)
 {
@@ -87,10 +81,7 @@ void StampItem::setRelaseYear(int releaseYear)
 	_releaseYear = releaseYear;
 }
 
-std::string StampItem::title() const
-{
-	return _title;
-}
+
 
 std::string StampItem::note() const
 {

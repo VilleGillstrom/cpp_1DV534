@@ -173,6 +173,7 @@
     <ClCompile Include="RemoveItemMenu.cpp" />
     <ClCompile Include="SearchItemMenu.cpp" />
     <ClCompile Include="ShowItemsByTypeMenu.cpp" />
+    <ClCompile Include="SortItemsMenu.cpp" />
     <ClCompile Include="Step4_1.cpp" />
     <ClCompile Include="UserInputHelper.cpp" />
   </ItemGroup>
@@ -192,6 +193,7 @@
     <ClInclude Include="SearchItemMenu.h" />
     <ClInclude Include="SharedMenuFunctions.h" />
     <ClInclude Include="ShowItemsByTypeMenu.h" />
+    <ClInclude Include="SortItemsMenu.h" />
     <ClInclude Include="UserInputHelper.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

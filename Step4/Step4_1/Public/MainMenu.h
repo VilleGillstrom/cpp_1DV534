@@ -7,14 +7,13 @@
 #include "ShowItemsByTypeMenu.h"
 #include "UserInputHelper.h"
 #include "SharedMenuFunctions.h"
+#include "SearchItemMenu.h"
 
 class MainMenu : public OptionsMenu
 {
 public:
 	MainMenu(CollectionRegistry& collectionRegistry);
 	~MainMenu() = default;
-
-
 
 
 	void showAllItems()
@@ -32,18 +31,6 @@ public:
 		int itemId = UserInputHelper::getIntFromUserLoop("Enter item id to remove: ", 0, 9999);
 		_collectionRegistry.removeItem(itemId);
 	}
-	void searchItemMenuFunc()
-	{
-		//int itemId = SharedMenuFunctions::
-		//_collectionRegistry.removeItem(itemId);
-	}
-
-
-
-	void showShowItemByTypeMenuFunc()
-	{
-		_showItemsByTypeMenu.show();
-	}
 
 
 	CollectionRegistry& _collectionRegistry;
@@ -53,4 +40,5 @@ private:
 	ShowItemByIdMenu _showItemByIdMenu;
 	AddItemMenu _addItemMenu;
 	ShowItemsByTypeMenu _showItemsByTypeMenu;
+	SearchItemMenu _searchItemsMenu;
 };

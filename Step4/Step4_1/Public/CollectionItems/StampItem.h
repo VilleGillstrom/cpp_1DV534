@@ -13,7 +13,7 @@ public:
 
 	std::vector<PropertyString> getProperties() const override;
 	void setProperties(std::vector<PropertyString> propertyString) override;
-	bool isSameAs(BaseCollectionItem* item) const override;
+	bool equalTo(BaseCollectionItem* item) const override;
 	bool isSameAs(StampItem* item) const;
 
 
@@ -22,15 +22,12 @@ public:
 
 
 	std::string toDisplayString() const override;
-	void setTitle(const std::string& title);
 	void setNote(const std::string& note);
 	void setRelaseYear(int releaseYear);
-	std::string title() const;
 	std::string note() const;
 	int releaseYear() const;
 
 private:
-	std::string _title;
 	std::string _note;
 	int _releaseYear;
 };

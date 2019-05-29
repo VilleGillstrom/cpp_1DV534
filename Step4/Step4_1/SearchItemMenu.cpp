@@ -6,21 +6,21 @@ SearchItemMenu::SearchItemMenu(CollectionRegistry collectionRegistry) : OptionsM
 _collectionRegistry(collectionRegistry)
 {
 
-	//addMenuOption(
-	//	"1",
-	//	{
-	//		"Search Stamp",
-	//		std::bind(&AddItemMenu::searchStampFunc, this)
-	//	}
-	//);
+	addMenuOption(
+		"1",
+		{
+			"Search Stamp",
+			std::bind(&SearchItemMenu::search<StampItem>, this)
+		}
+	);
 
-	//addMenuOption(
-	//	"2",
-	//	{
-	//		"Search Movie",
-	//		std::bind(&AddItemMenu::searchStampFunc, this)
-	//	}
-	//);
+	addMenuOption(
+		"2",
+		{
+			"Search Movie",
+			std::bind(&SearchItemMenu::search<MovieItem>, this)
+		}
+	);
 }
 
 

@@ -69,12 +69,16 @@ std::vector<BaseCollectionItem*> CollectionRegistry::getAllItems() const
 	return _inMemoryItems;
 }
 
-void CollectionRegistry::search(BaseCollectionItem* item)
+BaseCollectionItem* CollectionRegistry::search(BaseCollectionItem* searchItem)
 {
-	for(auto _item : _inMemoryItems)
-	{
-		item->isSameAs(_item);
-	}
+	auto pred = [&searchItem](BaseCollectionItem * item) {return searchItem->equalTo(item); };
+	auto it = std::find_if(_inMemoryItems.begin(), _inMemoryItems.end(), pred);
+	return it == _inMemoryItems.end() ? nullptr : *it;
+}
+
+void CollectionRegistry::sortItems(const std::function<bool(BaseCollectionItem*, BaseCollectionItem*)>& predicate)
+{
+	std::sort(_inMemoryItems.begin(), _inMemoryItems.end(), predicate);
 }
 
 void CollectionRegistry::showItems()
@@ -85,10 +89,6 @@ void CollectionRegistry::showItems()
 	}
 }
 
-
-void CollectionRegistry::sortItems()
-{
-}
 
 
 void CollectionRegistry::saveReg()

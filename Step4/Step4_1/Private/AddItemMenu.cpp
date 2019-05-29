@@ -14,7 +14,7 @@ _collectionRegistry(collectionRegistry)
 		"1",
 		{
 			"Add Stamp",
-			std::bind(&AddItemMenu::addStampFunc, this)
+			std::bind(&AddItemMenu::addItem<StampItem>, this)
 		}
 	);
 
@@ -22,19 +22,8 @@ _collectionRegistry(collectionRegistry)
 		"2",
 		{
 			"Add Movie",
-			std::bind(&AddItemMenu::addStampFunc, this)
+			std::bind(&AddItemMenu::addItem<MovieItem>, this)
 		}
 	);
 }
 
-void AddItemMenu::addStampFunc()
-{
-	StampItem* item = SharedMenuFunctions::makeStamp();
-	_collectionRegistry.addItem(item);
-}
-
-void AddItemMenu::addMovieFunc()
-{
-	MovieItem* item = SharedMenuFunctions::makeMovie();
-	_collectionRegistry.addItem(item);
-}

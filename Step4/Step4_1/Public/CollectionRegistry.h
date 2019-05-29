@@ -5,6 +5,7 @@
 #include "IItemCollectionStorage.h"
 #include <utility>
 #include "CollectionItems/StampItem.h"
+#include <functional>
 
 class Foobar
 {
@@ -27,7 +28,6 @@ public:
 	void removeAllItems();
 	bool findItemByItemId(int itemId, std::vector<BaseCollectionItem*>::const_iterator& iter) const;
 	void showItems();
-	void sortItems();
 
 	void saveReg();
 	void loadReg();
@@ -36,10 +36,14 @@ public:
 	std::vector<BaseCollectionItem*> getItemsOfType(const std::string& itemType);
 	BaseCollectionItem* getItem(int itemId) const;
 	std::vector<BaseCollectionItem*> getAllItems() const;
-	void search(BaseCollectionItem* item);
+	BaseCollectionItem* search(BaseCollectionItem* searchItem);
+	void sortItems(const std::function<bool(BaseCollectionItem*, BaseCollectionItem*)>& predicate);
+
+
 private:
 	bool assignId(BaseCollectionItem* item);
 
 	std::vector<BaseCollectionItem*> _inMemoryItems;
+
 	IItemCollectionStorage* _storage;
 };

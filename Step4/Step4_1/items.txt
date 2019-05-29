@@ -12,21 +12,21 @@ releaseYear:2000
 ###
 Movie
 2
-title:Avengers
+title:
 releaseYear:2009
 studio:Disney
 price:20
 ###
 Movie
 3
-title:Titanic
+title:
 releaseYear:1995
 studio:No idea
 price:20
 ###
 Movie
 4
-title:Avatar
+title:
 releaseYear:2005
 studio:Disney
 price:20

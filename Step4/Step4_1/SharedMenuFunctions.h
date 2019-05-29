@@ -6,7 +6,6 @@
 
 class SharedMenuFunctions
 {
-
 public:
 	static StampItem* makeStamp()
 	{
@@ -25,5 +24,20 @@ public:
 		int price = UserInputHelper::getIntFromUserLoop("Price: ", 0, 9999);
 		MovieItem* item = new MovieItem(title, studio, releaseYear, price);
 		return item;
+	}
+
+
+	template <typename T>
+	static T* make()
+	{
+		static_assert(std::is_base_of<BaseCollectionItem, T>::value, "T must derive from BaseCollectionItem");
+		if (std::is_same<T, StampItem>::value)
+		{
+			return (T*)(makeStamp());
+		}
+		if (std::is_same<T, MovieItem>::value)
+		{
+			return (T*)(makeMovie());
+		}
 	}
 };

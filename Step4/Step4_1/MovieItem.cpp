@@ -2,12 +2,12 @@
 #include <sstream>
 
 
-MovieItem::MovieItem() : BaseCollectionItem(getItemType())
+MovieItem::MovieItem() : MovieItem("","",-1,-1)
 {
 }
 
 MovieItem::MovieItem(const std::string& title, const std::string& studio, int releaseYear, int price):
-	BaseCollectionItem(getItemType()), _title(title), _releaseYear(releaseYear), _studio(studio), _price(price)
+	BaseCollectionItem(getItemType(), title), _releaseYear(releaseYear), _studio(studio), _price(price)
 {
 }
 
@@ -60,7 +60,7 @@ void MovieItem::setProperties(std::vector<PropertyString> propertiyStrings)
 	}
 }
 
-bool MovieItem::isSameAs(BaseCollectionItem* item) const
+bool MovieItem::equalTo(BaseCollectionItem* item) const
 {
 	if (MovieItem* mi = dynamic_cast<MovieItem*>(item))
 	{
@@ -78,15 +78,6 @@ bool MovieItem::isSameAs(MovieItem* item) const
 	return false;
 }
 
-std::string MovieItem::title() const
-{
-	return _title;
-}
-
-void MovieItem::setTitle(const std::string& title)
-{
-	_title = title;
-}
 
 int MovieItem::releaseYear() const
 {

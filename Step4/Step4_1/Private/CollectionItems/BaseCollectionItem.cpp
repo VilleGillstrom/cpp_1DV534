@@ -5,7 +5,7 @@
 
 
 
-BaseCollectionItem::BaseCollectionItem(const std::string& itemTypeName) : _itemTypeName(itemTypeName)
+BaseCollectionItem::BaseCollectionItem(const std::string& itemTypeName, const std::string& title) : _itemTypeName(itemTypeName), _title(title)
 {
 }
 

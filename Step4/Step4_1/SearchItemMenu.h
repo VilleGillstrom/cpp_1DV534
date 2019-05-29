@@ -12,12 +12,23 @@ public:
 
 private:
 
-	void searchStamp()
+	template <typename T>
+	void search()
 	{
-		StampItem* item = SharedMenuFunctions::makeStamp();
-		_collectionRegistry.search(item);
+		T* item = SharedMenuFunctions::make<T>()		;
+		BaseCollectionItem* foundItem = _collectionRegistry.search(item);
+
+		system("CLS");
+		if (foundItem)
+		{
+			std::cout << "Found:\n" << *foundItem << std::endl;
+		}
+		else
+		{
+			std::cout << "Didn't find item.\n";
+		}
+		std::cin.get();
 	}
 
 	CollectionRegistry _collectionRegistry;
 };
-

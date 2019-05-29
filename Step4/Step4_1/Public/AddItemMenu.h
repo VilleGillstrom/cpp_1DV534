@@ -1,6 +1,7 @@
 #pragma once
 #include "OptionsMenu.h"
 #include "CollectionRegistry.h"
+#include "SharedMenuFunctions.h"
 
 class AddItemMenu : public OptionsMenu
 {
@@ -10,12 +11,16 @@ public:
 	~AddItemMenu() = default;
 
 
-	void addStampFunc();
-	void addMovieFunc();
+
 
 
 private:
 	CollectionRegistry& _collectionRegistry;
+	template<typename T>
+	void addItem()
+	{
+		_collectionRegistry.addItem(SharedMenuFunctions::make<T>());
+	}
 
 };
 

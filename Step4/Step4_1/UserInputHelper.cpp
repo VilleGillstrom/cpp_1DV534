@@ -44,6 +44,6 @@ std::string UserInputHelper::getStringFromUser(const std::string& promptStr)
 	system("CLS");
 	std::string userInputStr;
 	std::cout << promptStr << std::endl;
-	std::cin >> userInputStr;
+	std::getline(std::cin, userInputStr);
 	return userInputStr;
 }

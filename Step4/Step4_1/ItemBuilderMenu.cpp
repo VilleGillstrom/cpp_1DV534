@@ -8,6 +8,6 @@ ItemBuilderMenu::ItemBuilderMenu(CollectionRegistry& collectionRegistry) : _coll
 
 void ItemBuilderMenu::show()
 {
-	BaseCollectionItem* NewItem = UserIemCreator.build();
+	BaseCollectionItem* NewItem = UserIemCreator.make();
 	_collectionRegistry.addItem(NewItem);
 }

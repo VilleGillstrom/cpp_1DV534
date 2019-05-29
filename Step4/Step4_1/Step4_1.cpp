@@ -4,11 +4,22 @@
 #include <iostream>
 #include <App.h>
 
-int main()
+void TestFileStorage()
 {
-    std::cout << "Hello World!\n";
+	FileItemCollectionStorage storage("testfile.txt");
 
-	App app;
-	app.run();
+	std::vector<std::unique_ptr<BaseCollectionItem>> items;
+	items.push_back(std::make_unique<StampItem>(StampItem("MyTitle", "MyNote", 1932)));
+	storage.save(items);
 }
 
+int main()
+{
+	std::cout << "Hello World!\n";
+
+	App app;
+	//app.run();
+
+
+	TestFileStorage();
+}

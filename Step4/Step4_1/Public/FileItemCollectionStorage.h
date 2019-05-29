@@ -1,5 +1,8 @@
 #pragma once
 #include "IItemCollectionStorage.h"
+#include <fstream>
+#include <iostream>
+#include <sstream>
 
 class FileItemCollectionStorage : public IItemCollectionStorage
 {
@@ -8,7 +11,13 @@ public:
 	~FileItemCollectionStorage() = default;
 
 
-	void save(const std::vector<BaseCollectionItem*>& vector) override;
+	void save(const std::vector<std::unique_ptr<BaseCollectionItem>>& items) const override;
 	std::vector<BaseCollectionItem*> load() override;
+
+	
+
+
+private:
+	std::string _filename;
 };
 

@@ -2,11 +2,11 @@
 #include "CollectionItems/StampItem.h"
 #include <iostream>
 #include <algorithm>
+#include "FileItemCollectionStorage.h"
 
-
+using std::unique_ptr;
 CollectionRegistry::CollectionRegistry() : CollectionRegistry(nullptr)
 {
-	//todo TEMPORARY FOR TESTING, REMEMBER TO REMOVE ME
 
 	
 }
@@ -14,6 +14,7 @@ CollectionRegistry::CollectionRegistry() : CollectionRegistry(nullptr)
 
 CollectionRegistry::CollectionRegistry(IItemCollectionStorage* itemStorage) :_storage(itemStorage)
 {
+	//todo TEMPORARY FOR TESTING, REMEMBER TO REMOVE ME
 	addItem(new StampItem("1 StampItemTitle", "1 A Note", 1992));
 	addItem(new StampItem("2 StampItemTitle", "2 A Note", 2003));
 }
@@ -22,10 +23,15 @@ CollectionRegistry::~CollectionRegistry()
 {
 }
 
-void CollectionRegistry::addItem(BaseCollectionItem* item)
+bool CollectionRegistry::addItem(BaseCollectionItem* item)
 {
-	assignId(item);
-	_inMemoryItems.push_back(item);
+	if(!assignId(item))
+		return false;
+	
+	_inMemoryItemsNew.push_back(unique_ptr<BaseCollectionItem>(item));
+	//_inMemoryItems.push_back(item);
+	return true;
+
 }
 
 void CollectionRegistry::removeItem(int itemId)
@@ -76,7 +82,7 @@ void CollectionRegistry::sortItems()
 
 void CollectionRegistry::saveReg()
 {
-	_storage->save(_inMemoryItems);
+	_storage->save(_inMemoryItemsNew);
 }
 
 void CollectionRegistry::loadReg()
@@ -84,7 +90,7 @@ void CollectionRegistry::loadReg()
 	_inMemoryItems = _storage->load();
 }
 
-void CollectionRegistry::assignId(BaseCollectionItem* item)
+bool CollectionRegistry::assignId(BaseCollectionItem* item)
 {
 	for (int freeId = 0; freeId < INT_MAX; freeId++)
 	{
@@ -103,7 +109,8 @@ void CollectionRegistry::assignId(BaseCollectionItem* item)
 		if (foundFreeId)
 		{
 			item->setItemId(freeId);
-			break;
+			return true;
 		}
 	}
+	return false;
 }

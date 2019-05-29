@@ -5,23 +5,19 @@
 #include "UserInputHelper.h"
 
 class CollectionRegistry;
-class ItemBuilderFromUser
+class ItemMakerFromUser
 {
 public:
-	ItemBuilderFromUser() {};
+	ItemMakerFromUser() {};
 
-
-	BaseCollectionItem* build()
+	BaseCollectionItem* make()
 	{
-		StampItem* item = new StampItem();
 
-		std::string title = UserInputHelper::getStringFromUser("Title: ");
+		std::string  title = UserInputHelper::getStringFromUser("Title: ");
 		std::string note = UserInputHelper::getStringFromUser("Note: ");
 		int releaseYear = UserInputHelper::getIntFromUser("Release year: ", 0, 9999);
+		StampItem* item = new StampItem(title, note, releaseYear);
 
-		item->setTitle(title);
-		item->setNote(note);
-		item->setRelaseYear(releaseYear);
 		return item;
 	}
 };
@@ -36,7 +32,7 @@ public:
 	virtual void show();
 
 private:
-	ItemBuilderFromUser UserIemCreator;
+	ItemMakerFromUser UserIemCreator;
 	CollectionRegistry& _collectionRegistry;
 };
 

@@ -1,0 +1,4 @@
+Stamp
+title:MyTitle
+note:MyNote
+releaseYear:1932

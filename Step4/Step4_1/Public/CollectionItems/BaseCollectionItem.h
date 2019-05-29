@@ -1,32 +1,41 @@
 #pragma once
 #include <ostream>
+#include <istream>
+#include <vector>
 
 
 class BaseCollectionItem
 {
-
-
 public:
-	BaseCollectionItem();
+	struct PropertyString
+	{
+		std::string name;
+		std::string value;
+	};
+
+
 	BaseCollectionItem(const std::string& itemTypeName);;
 	virtual ~BaseCollectionItem() = default;
 
 	friend std::ostream& operator<<(std::ostream& os, const BaseCollectionItem& item)
 	{
-		os << item.toString();
+		os << item.toDisplayString();
 		return os;
 	}
 
 	void setItemId(int itemId);
 	bool hasItemId(int itemId) const;
 
-	virtual std::string toString() const = 0;
+	virtual std::string toDisplayString() const = 0;
 
 	std::string getItemTypeName()const { return _itemTypeName; }
 
+	virtual std::vector<PropertyString> getProperties() const { return {}; };
+	
+
 
 protected:
-	static std::string _itemTypeName;
+	const std::string _itemTypeName;
 
 
 private:

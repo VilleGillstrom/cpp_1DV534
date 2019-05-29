@@ -4,11 +4,8 @@
 
 
 
-BaseCollectionItem::BaseCollectionItem()
-{
-}
 
-BaseCollectionItem::BaseCollectionItem(const std::string& itemTypeName)
+BaseCollectionItem::BaseCollectionItem(const std::string& itemTypeName) : _itemTypeName(itemTypeName)
 {
 }
 

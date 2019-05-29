@@ -1,20 +1,33 @@
 
 #include <UserInputHelper.h>
 
-int UserInputHelper::getIntFromUser(const std::string& promptStr, int min, int max)
+bool UserInputHelper::getIntFromUser(int min, int max, int& number)
+{
+	std::cin >> number;
+	if(std::cin.bad())
+	{
+		std::cin.clear();
+		return false;
+	}
+
+	// Check if in valid range
+	if (min <= number && number <= max)
+	{
+		std::cin.get(); // Remove the trailing newline
+		return true;
+	}
+	return false;
+}
+
+int UserInputHelper::getIntFromUserLoop(const std::string& promptStr, int min, int max)
 {
 	system("CLS");
-
 	int number;
 	while (1)
 	{
 		std::cout << promptStr << std::endl;
-		std::cin >> number;
-
-		// If valid number, break and return
-		if (min <= number && number <= max)
+		if (getIntFromUser(min, max, number))
 		{
-			std::cin.get(); // Remove the trailing newline
 			break;
 		}
 		system("CLS");

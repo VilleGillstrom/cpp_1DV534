@@ -24,24 +24,25 @@ void OptionsMenu::show()
 
 void OptionsMenu::show_internal()
 {
-	char choice;
+	std::string choice;
 	MenuOption ChosenMenuOption;
 
 	while (true)
 	{
+		system("CLS");
 		std::cout << _menuTitle << "\n";
 
 		// Show the various options
 		for (auto option : menuOptions)
 		{
-			char foo = option.first;
+			std::string optionInput = option.first;
 			MenuOption menuOption = option.second;
-			std::cout << foo << ") " << menuOption.optionText << std::endl;
+			std::cout << optionInput << ") " << menuOption.optionText << std::endl;
 		}
 		std::cout << std::endl;
 
 		std::cin.clear();
-		std::cin.get(choice);
+		std::cin >> choice;
 		std::cin.ignore();
 
 		if (isValidChoice(choice))
@@ -75,17 +76,23 @@ void OptionsMenu::show_internal()
 }
 
 
-void OptionsMenu::addMenuOption(char userInput, MenuOption option)
+//void OptionsMenu::addMenuOption(char userInput, MenuOption option)
+//{
+//	addMenuOption(std::to_string(userInput), option);
+//}
+
+void OptionsMenu::addMenuOption(const std::string& userInput, MenuOption option)
 {
-	menuOptions.insert({userInput, option});
+	menuOptions.insert({ userInput, option });
 }
+
 
 void OptionsMenu::setLooping(bool isLooping)
 {
 	_isLooping = isLooping;
 }
 
-bool OptionsMenu::isValidChoice(char choice) const
+bool OptionsMenu::isValidChoice(const std::string& choice) const
 {
 	for (auto o : menuOptions)
 	{

@@ -51,9 +51,6 @@
     <ClCompile Include="Private\MainMenu.cpp">
       <Filter>Source Files\UI</Filter>
     </ClCompile>
-    <ClCompile Include="ItemBuilderMenu.cpp">
-      <Filter>Source Files\UI</Filter>
-    </ClCompile>
     <ClCompile Include="OptionsMenu.cpp">
       <Filter>Source Files\UI</Filter>
     </ClCompile>
@@ -65,6 +62,15 @@
     </ClCompile>
     <ClCompile Include="Private\FileItemCollectionStorage.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MovieItem.cpp">
+      <Filter>Source Files\CollectionItem</Filter>
+    </ClCompile>
+    <ClCompile Include="ShowItemsByTypeMenu.cpp">
+      <Filter>Source Files\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="SearchItemMenu.cpp">
+      <Filter>Source Files\UI</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -89,9 +95,6 @@
     <ClInclude Include="Public\AddItemMenu.h">
       <Filter>Header Files\UI</Filter>
     </ClInclude>
-    <ClInclude Include="ItemBuilderMenu.h">
-      <Filter>Header Files\UI</Filter>
-    </ClInclude>
     <ClInclude Include="OptionsMenu.h">
       <Filter>Header Files\UI</Filter>
     </ClInclude>
@@ -106,6 +109,18 @@
     </ClInclude>
     <ClInclude Include="Public\FileItemCollectionStorage.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MovieItem.h">
+      <Filter>Header Files\CollectionItem</Filter>
+    </ClInclude>
+    <ClInclude Include="ShowItemsByTypeMenu.h">
+      <Filter>Header Files\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="SharedMenuFunctions.h">
+      <Filter>Header Files\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="SearchItemMenu.h">
+      <Filter>Header Files\UI</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -14,9 +14,6 @@ CollectionRegistry::CollectionRegistry() : CollectionRegistry(nullptr)
 
 CollectionRegistry::CollectionRegistry(IItemCollectionStorage* itemStorage) :_storage(itemStorage)
 {
-	//todo TEMPORARY FOR TESTING, REMEMBER TO REMOVE ME
-	addItem(new StampItem("1 StampItemTitle", "1 A Note", 1992));
-	addItem(new StampItem("2 StampItemTitle", "2 A Note", 2003));
 }
 
 CollectionRegistry::~CollectionRegistry()
@@ -28,8 +25,7 @@ bool CollectionRegistry::addItem(BaseCollectionItem* item)
 	if(!assignId(item))
 		return false;
 	
-	_inMemoryItemsNew.push_back(unique_ptr<BaseCollectionItem>(item));
-	//_inMemoryItems.push_back(item);
+	_inMemoryItems.push_back(item);
 	return true;
 
 }
@@ -57,14 +53,28 @@ bool CollectionRegistry::findItemByItemId(int itemId, std::vector<BaseCollection
 	return iter != _inMemoryItems.cend();
 }
 
-void CollectionRegistry::showItem(int itemId) const
+
+BaseCollectionItem* CollectionRegistry::getItem(int itemId) const 
 {
 	std::vector<BaseCollectionItem*>::const_iterator iter;
-	if(findItemByItemId(itemId, iter))
+	if (findItemByItemId(itemId, iter))
 	{
-		std::cout << *iter;
+		return *iter;
 	}
+	return nullptr;
+}
 
+std::vector<BaseCollectionItem*> CollectionRegistry::getAllItems() const
+{
+	return _inMemoryItems;
+}
+
+void CollectionRegistry::search(BaseCollectionItem* item)
+{
+	for(auto _item : _inMemoryItems)
+	{
+		item->isSameAs(_item);
+	}
 }
 
 void CollectionRegistry::showItems()
@@ -75,6 +85,7 @@ void CollectionRegistry::showItems()
 	}
 }
 
+
 void CollectionRegistry::sortItems()
 {
 }
@@ -82,13 +93,28 @@ void CollectionRegistry::sortItems()
 
 void CollectionRegistry::saveReg()
 {
-	_storage->save(_inMemoryItemsNew);
+	_storage->save(_inMemoryItems);
 }
 
 void CollectionRegistry::loadReg()
 {
 	_inMemoryItems = _storage->load();
 }
+
+std::vector<BaseCollectionItem*> CollectionRegistry::getItemsOfType(const std::string& itemType)
+{
+	std::vector<BaseCollectionItem*> items;
+	for(BaseCollectionItem* item : _inMemoryItems)
+	{
+		if(item->getItemTypeName() == itemType)
+		{
+			items.push_back(item);
+		}
+	}
+	return items;
+}
+
+
 
 bool CollectionRegistry::assignId(BaseCollectionItem* item)
 {

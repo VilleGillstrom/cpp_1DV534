@@ -11,7 +11,9 @@ public:
 	~FileItemCollectionStorage() = default;
 
 
-	void save(const std::vector<std::unique_ptr<BaseCollectionItem>>& items) const override;
+	void save(const std::vector<BaseCollectionItem*>& items) const override;
+	bool readPropertyString(std::ifstream& ifs, BaseCollectionItem::PropertyString& foo);
+	BaseCollectionItem* newItemFromTypeString(const std::string& itemtype);
 	std::vector<BaseCollectionItem*> load() override;
 
 	
@@ -19,5 +21,6 @@ public:
 
 private:
 	std::string _filename;
+	const std::string _itemDelim; 
 };
 

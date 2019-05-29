@@ -160,7 +160,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="ItemBuilderMenu.cpp" />
+    <ClCompile Include="MovieItem.cpp" />
     <ClCompile Include="OptionsMenu.cpp" />
     <ClCompile Include="Private\AddItemMenu.cpp" />
     <ClCompile Include="Private\App.cpp" />
@@ -171,12 +171,14 @@
     <ClCompile Include="Private\MainMenu.cpp" />
     <ClCompile Include="Private\ShowItemByIdMenu.cpp" />
     <ClCompile Include="RemoveItemMenu.cpp" />
+    <ClCompile Include="SearchItemMenu.cpp" />
+    <ClCompile Include="ShowItemsByTypeMenu.cpp" />
     <ClCompile Include="Step4_1.cpp" />
     <ClCompile Include="UserInputHelper.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="IItemCollectionStorage.h" />
-    <ClInclude Include="ItemBuilderMenu.h" />
+    <ClInclude Include="MovieItem.h" />
     <ClInclude Include="OptionsMenu.h" />
     <ClInclude Include="Public\AddItemMenu.h" />
     <ClInclude Include="Public\App.h" />
@@ -187,6 +189,9 @@
     <ClInclude Include="Public\MainMenu.h" />
     <ClInclude Include="Public\ShowItemByIdMenu.h" />
     <ClInclude Include="RemoveItemMenu.h" />
+    <ClInclude Include="SearchItemMenu.h" />
+    <ClInclude Include="SharedMenuFunctions.h" />
+    <ClInclude Include="ShowItemsByTypeMenu.h" />
     <ClInclude Include="UserInputHelper.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

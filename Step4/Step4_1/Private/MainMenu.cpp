@@ -5,47 +5,58 @@ MainMenu::MainMenu(CollectionRegistry& collectionRegistry) :
 OptionsMenu("Main Menu", true),
 _collectionRegistry((collectionRegistry)),
 _addItemMenu( _collectionRegistry ),
-_showItemByIdMenu(_collectionRegistry)
+_showItemByIdMenu(_collectionRegistry),
+_showItemsByTypeMenu(_collectionRegistry)
 {
 
-	addMenuOption('1',
+	addMenuOption("1",
 		{
 			"Show item by item ID", 
-			std::bind(&MainMenu::showItemMenuFunc, this)
+			std::bind(&ShowItemByIdMenu::show, _showItemByIdMenu)
 		}
 	);
 
-	addMenuOption('2',
+	addMenuOption("2",
 		{
 			"Show all items ",
-			std::bind(&CollectionRegistry::showItems, _collectionRegistry)
+			std::bind(&MainMenu::showAllItems, this)
 
 		}
 	);
-	addMenuOption('3', {"Show all by type"});
+	addMenuOption("3",
+		{
+		"Show all by type",
+			std::bind(&MainMenu::showShowItemByTypeMenuFunc, this )
+	}
+	);
 
 
 
 	addMenuOption(
-		'4',
+		"4",
 		{
 			"Add item",
-			std::bind(&MainMenu::showAddItemMenuFunc, this)
+			std::bind(&AddItemMenu::show, _addItemMenu)
 		}
 	);
 
 
-	addMenuOption('5', 
+	addMenuOption("5",
 		{
 			"Remove item",
 			std::bind(&MainMenu::removeItemMenuFunc, this)
 
 		}
 	);
-	addMenuOption('6', {"search for item "});
+	addMenuOption("6", 
+		{
+		"search for item",
+
+	}
+	);
 	
 	
-	addMenuOption('7', 
+	addMenuOption("7",
 		{
 			"sort items",
 			std::bind(&CollectionRegistry::sortItems, _collectionRegistry)
@@ -54,7 +65,7 @@ _showItemByIdMenu(_collectionRegistry)
 	);
 
 
-	addMenuOption('q', { "Exit", std::bind(&OptionsMenu::setLooping, this, false) });
+	addMenuOption("q", { "Exit", std::bind(&OptionsMenu::setLooping, this, false) });
 }
 
 

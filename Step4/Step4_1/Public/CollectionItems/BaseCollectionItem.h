@@ -1,6 +1,5 @@
 #pragma once
 #include <ostream>
-#include <istream>
 #include <vector>
 
 
@@ -27,11 +26,24 @@ public:
 	bool hasItemId(int itemId) const;
 
 	virtual std::string toDisplayString() const = 0;
+	virtual std::string getItemTypeName() const = 0;
 
-	std::string getItemTypeName()const { return _itemTypeName; }
+	virtual std::vector<PropertyString> getProperties() const = 0;
+	virtual void setProperties(std::vector<PropertyString> propertiyStrings) = 0;
+	virtual bool isSameAs(BaseCollectionItem* item) const = 0;
 
-	virtual std::vector<PropertyString> getProperties() const { return {}; };
-	
+
+	//template<typename T>
+	//bool isSameAs(T item)
+	//{
+	//	if (T * mi = dynamic_cast<T*>(item))
+	//	{
+	//		return isSameAs(mi);
+	//	}
+	//	return false;
+	//}
+
+	int itemId() const;
 
 
 protected:

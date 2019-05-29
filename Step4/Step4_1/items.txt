@@ -1,16 +1,33 @@
 Stamp
+0
 title:MyTitle
 note:My Note
 releaseYear:1932
 ###
 Stamp
+1
 title:MyTitle2
 note:My Note 2
 releaseYear:2000
 ###
 Movie
+2
 title:Avengers
 releaseYear:2009
+studio:Disney
+price:20
+###
+Movie
+3
+title:Titanic
+releaseYear:1995
+studio:No idea
+price:20
+###
+Movie
+4
+title:Avatar
+releaseYear:2005
 studio:Disney
 price:20
 ###

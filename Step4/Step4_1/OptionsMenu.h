@@ -19,15 +19,16 @@ public:
 	void show();
 	void show_internal();
 
-	void addMenuOption(char userInput, MenuOption option);
+	//void addMenuOption(char userInput, MenuOption option);
+	void addMenuOption(const std::string& userInput, MenuOption option);
 
 
 	void setLooping(bool isLooping);
 
 protected:
 	std::string _menuTitle;
-	std::map<char, MenuOption> menuOptions;
+	std::map<std::string, MenuOption> menuOptions;
 
-	bool isValidChoice(char choice) const;
+	bool isValidChoice(const std::string& choice) const;
 	bool _isLooping; // will loop menu while this one is true
 };

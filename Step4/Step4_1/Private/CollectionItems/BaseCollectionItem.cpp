@@ -19,3 +19,8 @@ bool BaseCollectionItem::hasItemId(int itemId) const
 {
 	return itemId == _itemId;
 }
+
+int BaseCollectionItem::itemId() const
+{
+	return _itemId;
+}

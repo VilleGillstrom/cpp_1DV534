@@ -1,11 +1,12 @@
 #pragma once
 #include <iostream>
-#include <map>
-#include <functional>
 #include "CollectionRegistry.h"
 #include "ShowItemByIdMenu.h"
 #include <AddItemMenu.h>
 #include "OptionsMenu.h"
+#include "ShowItemsByTypeMenu.h"
+#include "UserInputHelper.h"
+#include "SharedMenuFunctions.h"
 
 class MainMenu : public OptionsMenu
 {
@@ -13,20 +14,35 @@ public:
 	MainMenu(CollectionRegistry& collectionRegistry);
 	~MainMenu() = default;
 
-	void showItemMenuFunc()
-	{
-		_showItemByIdMenu.show();
-	}
 
-	void showAddItemMenuFunc()
+
+
+	void showAllItems()
 	{
-		_addItemMenu.show();
+		std::vector<BaseCollectionItem*> items = _collectionRegistry.getAllItems();
+		for (BaseCollectionItem* item : items)
+		{
+			std::cout << *item << std::endl;
+		}
+		std::cin.get();
 	}
 
 	void removeItemMenuFunc()
 	{
-		int itemId = UserInputHelper::getIntFromUser("Enter item id to remove: ", 0, 9999);
+		int itemId = UserInputHelper::getIntFromUserLoop("Enter item id to remove: ", 0, 9999);
 		_collectionRegistry.removeItem(itemId);
+	}
+	void searchItemMenuFunc()
+	{
+		//int itemId = SharedMenuFunctions::
+		//_collectionRegistry.removeItem(itemId);
+	}
+
+
+
+	void showShowItemByTypeMenuFunc()
+	{
+		_showItemsByTypeMenu.show();
 	}
 
 
@@ -36,4 +52,5 @@ public:
 private:
 	ShowItemByIdMenu _showItemByIdMenu;
 	AddItemMenu _addItemMenu;
+	ShowItemsByTypeMenu _showItemsByTypeMenu;
 };

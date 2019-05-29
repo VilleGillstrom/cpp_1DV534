@@ -1,6 +1,7 @@
 #include "ShowItemByIdMenu.h"
 #include "CollectionRegistry.h"
 #include <iostream>
+#include "UserInputHelper.h"
 
 
 ShowItemByIdMenu::ShowItemByIdMenu(CollectionRegistry& collectionRegistry) : _collectionRegistry(collectionRegistry)
@@ -16,17 +17,12 @@ ShowItemByIdMenu::ShowItemByIdMenu(CollectionRegistry& collectionRegistry) : _co
 void ShowItemByIdMenu::show()
 {
 	int id;
-	do
+	std::cout << "---------- Find item ------------\n";
+	std::cout << "Item id: ";
+	if(UserInputHelper::getIntFromUser(0, 99999, id))
 	{
-		std::cout << "---------- Find item ------------\n";
-		std::cout << "Show item with id: ";
-
-		std::cin >> id;
-		//todo validity check
-		break;
+		BaseCollectionItem* item = _collectionRegistry.getItem(id);
+		item ? std::cout << *item : std::cout << "Item not found";
 	}
-	while (true);
-
-	_collectionRegistry.showItem(id);
-
+	std::cin.get();
 }

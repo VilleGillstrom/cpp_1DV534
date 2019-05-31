@@ -71,5 +71,21 @@ _sortItemsMenu(_collectionRegistry){
 	addMenuOption("q", { "Exit", std::bind(&OptionsMenu::setLooping, this, false) });
 }
 
+void MainMenu::showAllItems() const
+{
+	std::vector<BaseCollectionItem*> items = _collectionRegistry.getAllItems();
+	for (BaseCollectionItem* item : items)
+	{
+		std::cout << *item << std::endl;
+	}
+	std::cin.get();
+}
+
+void MainMenu::removeItemMenuFunc()
+{
+	int itemId = UserInputHelper::getIntFromUserLoop("Enter item id to remove: ", 0, 9999);
+	_collectionRegistry.removeItem(itemId);
+}
+
 
 

@@ -5,15 +5,16 @@
 #include "MovieItem.h"
 #include "CollectionItems/StampItem.h"
 #include "ItemCreator.h"
+#include "SongItem.h"
 
 
 class App
 {
 public:
-	App() 
+	App()
 	{
-		
 	}
+
 	~App();
 
 
@@ -25,21 +26,26 @@ public:
 		MovieItem* item3 = new MovieItem("Avengers", "Disney", 2009, 20);
 		MovieItem* item4 = new MovieItem("Titanic", "No idea", 1995, 20);
 		MovieItem* item5 = new MovieItem("Avatar", "Disney", 2005, 20);
+		SongItem* item6 = new SongItem("Imagine ", "John Lennon", 183);
+		SongItem* item7 = new SongItem("Billie Jean", "Michael Jackson", 294);
 
 		item1->setItemId(0);
 		item2->setItemId(1);
 		item3->setItemId(2);
 		item4->setItemId(3);
 		item5->setItemId(4);
-		
+		item6->setItemId(5);
+		item7->setItemId(6);
+
 		items.push_back(item1);
 		items.push_back(item2);
 		items.push_back(item3);
 		items.push_back(item4);
 		items.push_back(item5);
+		items.push_back(item6);
+		items.push_back(item7);
 
 		storage.save(items);
-
 	}
 
 	int run()
@@ -49,20 +55,13 @@ public:
 
 		CollectionRegistry registry(&itemStorage);
 		registry.loadReg();
-		
-		
-		MainMenu menu(registry);
 
+		MainMenu menu(registry);
 
 		menu.show();
 
 		return 0;
 	}
 
-
-
-
 	CollectionRegistry _registry;
-	//AddItemMenu* _addItemMenu;
 };
-

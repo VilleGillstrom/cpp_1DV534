@@ -16,13 +16,6 @@ public:
 private:
 	CollectionRegistry& _collectionRegistry;
 
-	void sortByTitle()
-	{
-		const auto lambda = [](BaseCollectionItem* A, BaseCollectionItem* B) { return A->title() > B->title(); };
-		_collectionRegistry.sortItems(lambda);
-	}
-
-
 	template <typename T>
 	void sort(const std::string& propertyName, SortMode sortMode)
 	{
@@ -30,11 +23,23 @@ private:
 		{
 			T AVal;
 			T BVal;
-			if (A->getProperty(propertyName, AVal) && B->getProperty(propertyName, BVal))
+			bool bAVal = A->getProperty(propertyName, AVal);
+			bool bBVal = B->getProperty(propertyName, BVal);
+			bool result = false;
+
+			if (bAVal && bBVal)
 			{
-				return sortMode == ascending ? AVal < BVal : AVal > BVal;
+				result = sortMode == ascending ? AVal < BVal : AVal > BVal;
 			}
-			return false;
+			else if (bAVal)
+			{
+				result = true; //Will move A above B since A has the property
+			}
+			else if (bBVal)
+			{
+				result = false; //Will move B above A since B has the property
+			}
+			return result;
 		};
 		_collectionRegistry.sortItems(lambda);
 	}
@@ -54,22 +59,6 @@ private:
 			                  "Sort descending",
 			                  std::bind(&SortItemsMenu::sort<T>, this, propertyName, descending)
 		                  });
-		foo.show(); 
-	}
-
-	template <typename T>
-	void sortItemDecided(const std::string& item)
-	{
-		OptionsMenu foo("Select what item's property (will sort other items that have same property)");
-		foo.addMenuOption("1",
-			{
-				"Sort ascending",
-				std::bind(&SortItemsMenu::sortPropertyDecided<T>, this, item)
-			});
-
-		
 		foo.show();
 	}
-
-
 };

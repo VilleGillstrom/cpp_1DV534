@@ -46,7 +46,7 @@ SortItemsMenu::SortItemsMenu(CollectionRegistry& collectionRegistry) : OptionsMe
 		"6",
 		{
 			"Sort by song",
-			std::bind(&SortItemsMenu::sortPropertyDecided<int>, this, "song")
+			std::bind(&SortItemsMenu::sortPropertyDecided<std::string>, this, "song")
 		}
 	);
 

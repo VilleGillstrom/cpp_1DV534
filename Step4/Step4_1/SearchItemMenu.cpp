@@ -1,8 +1,8 @@
 #include "SearchItemMenu.h"
 #include "AddItemMenu.h"
+#include "CollectionRegistry.h"
 
-
-SearchItemMenu::SearchItemMenu(CollectionRegistry collectionRegistry) : OptionsMenu("Add Item Menu"),
+SearchItemMenu::SearchItemMenu(CollectionRegistry& collectionRegistry) : OptionsMenu("Add Item Menu"),
 _collectionRegistry(collectionRegistry)
 {
 

@@ -8,6 +8,7 @@
 #include "UserInputHelper.h"
 #include "SharedMenuFunctions.h"
 #include "SearchItemMenu.h"
+#include "SortItemsMenu.h"
 
 class MainMenu : public OptionsMenu
 {
@@ -41,4 +42,5 @@ private:
 	AddItemMenu _addItemMenu;
 	ShowItemsByTypeMenu _showItemsByTypeMenu;
 	SearchItemMenu _searchItemsMenu;
+	SortItemsMenu _sortItemsMenu;
 };

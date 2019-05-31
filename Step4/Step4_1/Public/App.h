@@ -4,11 +4,8 @@
 #include "FileItemCollectionStorage.h"
 #include "MovieItem.h"
 #include "CollectionItems/StampItem.h"
+#include "ItemCreator.h"
 
-class ItemFactory
-{
-	ItemFactory() {};
-};
 
 class App
 {
@@ -52,6 +49,8 @@ public:
 
 		CollectionRegistry registry(&itemStorage);
 		registry.loadReg();
+		
+		
 		MainMenu menu(registry);
 
 

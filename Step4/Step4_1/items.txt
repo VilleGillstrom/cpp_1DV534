@@ -1,33 +1,21 @@
-Stamp
-0
-title:MyTitle
-note:My Note
-releaseYear:1932
-###
-Stamp
-1
-title:MyTitle2
-note:My Note 2
-releaseYear:2000
-###
 Movie
 2
-title:
+price:20
 releaseYear:2009
 studio:Disney
-price:20
+title:Avengers
 ###
 Movie
 3
-title:
+price:20
 releaseYear:1995
 studio:No idea
-price:20
+title:Titanic
 ###
 Movie
 4
-title:
+price:20
 releaseYear:2005
 studio:Disney
-price:20
+title:Avatar
 ###

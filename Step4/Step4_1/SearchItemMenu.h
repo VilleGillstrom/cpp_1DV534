@@ -7,7 +7,7 @@ class SearchItemMenu :
 	public OptionsMenu
 {
 public:
-	SearchItemMenu(CollectionRegistry collectionRegistry);
+	SearchItemMenu(CollectionRegistry& collectionRegistry);
 	~SearchItemMenu() = default;
 
 private:
@@ -30,5 +30,5 @@ private:
 		std::cin.get();
 	}
 
-	CollectionRegistry _collectionRegistry;
+	CollectionRegistry& _collectionRegistry;
 };

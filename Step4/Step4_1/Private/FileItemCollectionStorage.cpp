@@ -30,11 +30,11 @@ void FileItemCollectionStorage::save(const std::vector<BaseCollectionItem*>& ite
 	for (auto& item : items)
 	{
 		ss << item->getItemTypeName() << "\n";
-		std::vector<BaseCollectionItem::PropertyString> props = item->getProperties();
+		std::map<std::string, std::string> props = item->getProperties();
 		ss << item->itemId() << "\n";
 		for (auto prop : props)
 		{
-			ss << prop.name << ":" << prop.value << "\n";
+			ss << prop.first << ":" << prop.second << "\n";
 		}
 
 		ss << _itemDelim << "\n";

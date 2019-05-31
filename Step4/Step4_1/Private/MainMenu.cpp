@@ -1,4 +1,4 @@
-#include "..\Public\MainMenu.h"
+#include "MainMenu.h"
 
 
 MainMenu::MainMenu(CollectionRegistry& collectionRegistry) : 
@@ -7,8 +7,8 @@ _collectionRegistry((collectionRegistry)),
 _addItemMenu( _collectionRegistry ),
 _showItemByIdMenu(_collectionRegistry),
 _showItemsByTypeMenu(_collectionRegistry),
-_searchItemsMenu(_collectionRegistry)
-{
+_searchItemsMenu(_collectionRegistry),
+_sortItemsMenu(_collectionRegistry){
 
 	addMenuOption("1",
 		{
@@ -61,8 +61,8 @@ _searchItemsMenu(_collectionRegistry)
 	
 	addMenuOption("7",
 		{
-			"sort items"
-			//std::bind(&MainMenu::showortItems, _collectionRegistry)
+			"sort items",
+			std::bind(&SortItemsMenu::show, _sortItemsMenu)
 
 		}
 	);

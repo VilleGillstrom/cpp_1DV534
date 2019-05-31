@@ -13,23 +13,13 @@ StampItem::StampItem(const std::string& title, const std::string& note, int rele
 }
 
 
-std::string StampItem::toDisplayString() const
-{
-	std::stringstream ss;
-	ss << "id: " << itemId() << "\n";
-	ss << "Title: " << _title << "\n";
-	ss << "Release year: " << _releaseYear << "\n";
-	ss << "Note: " << _note << "\n";
-	return ss.str();
-}
 
-
-std::vector<BaseCollectionItem::PropertyString> StampItem::getProperties() const
+std::map<std::string, std::string> StampItem::getProperties() const
 {
-	std::vector<PropertyString> props;
-	props.push_back({"title", _title});
-	props.push_back({"note", _note});
-	props.push_back({"releaseYear", std::to_string(_releaseYear)});
+	std::map<std::string, std::string> props;
+	props.insert({"title", _title});
+	props.insert({"note", _note});
+	props.insert({"releaseYear", std::to_string(_releaseYear)});
 	return props;
 }
 
@@ -54,20 +44,16 @@ void StampItem::setProperties(std::vector<PropertyString> propertyString)
 
 bool StampItem::equalTo(BaseCollectionItem* item) const
 {
-	if (StampItem * mi = dynamic_cast<StampItem*>(item))
+	if (StampItem * asStamp = dynamic_cast<StampItem*>(item))
 	{
-		return isSameAs(mi);
+		auto cond = _releaseYear == asStamp->releaseYear();
+		auto cond1 = _note == asStamp->note();
+		auto cond2 = _title == asStamp->title();
+		return cond && cond1&& cond2;
 	}
 	return false;
 }
 
-bool StampItem::isSameAs(StampItem* item) const
-{
-	auto cond = _releaseYear == item->releaseYear();
-	auto cond1 = _note == item->note();
-	auto cond2 = _title == item->title();
-	return cond && cond1 && cond2;
-}
 
 
 

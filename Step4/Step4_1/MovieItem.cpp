@@ -12,28 +12,15 @@ MovieItem::MovieItem(const std::string& title, const std::string& studio, int re
 }
 
 
-MovieItem::~MovieItem()
-{
-}
 
-std::string MovieItem::toDisplayString() const
-{
-	std::stringstream ss;
-	ss << "id: " << itemId() << "\n";
-	ss << "Title: " << _title << "\n";
-	ss << "Studio: " << _studio << "\n";
-	ss << "Release year: " << _releaseYear << "\n";
-	ss << "Price: " << _price << "\n";
-	return ss.str();
-}
 
-std::vector<BaseCollectionItem::PropertyString> MovieItem::getProperties() const
+std::map<std::string, std::string> MovieItem::getProperties() const
 {
-	std::vector<PropertyString> props;
-	props.push_back({"title", _title});
-	props.push_back({"releaseYear", std::to_string(_releaseYear)});
-	props.push_back({"studio", _studio});
-	props.push_back({"price", std::to_string(_price)});
+	std::map<std::string, std::string> props;
+	props.insert({"title", _title});
+	props.insert({"releaseYear", std::to_string(_releaseYear)});
+	props.insert({"studio", _studio});
+	props.insert({"price", std::to_string(_price)});
 	return props;
 }
 

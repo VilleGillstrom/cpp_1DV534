@@ -1,0 +1,18 @@
+Step 4
+
+
+
+Presistent storage
+The persistent storage is a file. BaseCollectionItem have a function that returns the name of a property aswell as the value as strings. FileItemCollectionStorage takes each of these string and store it together with  it's id and BaseCollectionItem's specific type-name. 
+
+When reading from file it uses the type-name to determine which BaseCollectionItem's  class to instantiate. This will becoma a very long if-else statement as the number of items are added. Would probably have to create some kind of factory in the future that items temselves can register to in the future.
+
+User interface
+A std::map with each possible option as a key are created for the different menus. The values are callable functions which will run when the key-string is entered by the user. It creates quite a few classes, one for each sub-menu, but each class is pretty clean. 
+
+For example, if an option should open another menu the new value in the function-map would be bound to the new menu's show() function.
+
+
+Similar to the presisten storage the implementation will become unmaintainable as number of items increase. The options are all hard-coded. 
+
+

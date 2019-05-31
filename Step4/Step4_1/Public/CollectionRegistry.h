@@ -6,12 +6,9 @@
 #include <utility>
 #include "CollectionItems/StampItem.h"
 #include <functional>
+#include <map>
+#include "MovieItem.h"
 
-class Foobar
-{
-public:
-	~Foobar() = default;
-};
 
 class CollectionRegistry
 {
@@ -19,8 +16,6 @@ public:
 	CollectionRegistry();
 	CollectionRegistry(IItemCollectionStorage* itemStorage);
 	~CollectionRegistry();
-
-
 
 
 	bool addItem(BaseCollectionItem* item); // Add the item to the register, takes control of item
@@ -40,10 +35,11 @@ public:
 	void sortItems(const std::function<bool(BaseCollectionItem*, BaseCollectionItem*)>& predicate);
 
 
+
+
 private:
 	bool assignId(BaseCollectionItem* item);
 
 	std::vector<BaseCollectionItem*> _inMemoryItems;
-
 	IItemCollectionStorage* _storage;
 };

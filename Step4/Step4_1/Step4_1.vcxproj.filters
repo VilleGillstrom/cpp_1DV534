@@ -75,6 +75,9 @@
     <ClCompile Include="SortItemsMenu.cpp">
       <Filter>Source Files\UI</Filter>
     </ClCompile>
+    <ClCompile Include="SongItem.cpp">
+      <Filter>Source Files\CollectionItem</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Public\App.h">
@@ -127,6 +130,9 @@
     </ClInclude>
     <ClInclude Include="SortItemsMenu.h">
       <Filter>Header Files\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="SongItem.h">
+      <Filter>Header Files\CollectionItem</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

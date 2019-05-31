@@ -23,15 +23,16 @@ bool assertMovie(MovieItem* item, std::string title, std::string studio, int rel
 
 void TestFileStorage()
 {
-	FileItemCollectionStorage storage("testfile.txt");
+	const std::string fn = "testfile.txt";
+	FileItemCollectionStorage storage;
 
 	std::vector<BaseCollectionItem*> items;
 	items.push_back(new StampItem("MyTitle", "My Note", 1932));
 	items.push_back(new StampItem("MyTitle2", "My Note 2", 2000));
 	items.push_back(new MovieItem("Avengers", "Disney", 2009, 20));
-	storage.save(items);
+	storage.save(items, fn);
 
-	std::vector<BaseCollectionItem*> loaded = storage.load();
+	std::vector<BaseCollectionItem*> loaded = storage.load(fn);
 	if (loaded.size() < 3) { std::cerr << "Didn't load all items"; return; };
 
 	auto item = static_cast<StampItem*>(loaded.at(0));

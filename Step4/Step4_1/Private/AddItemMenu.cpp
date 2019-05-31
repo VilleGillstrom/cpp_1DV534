@@ -1,8 +1,6 @@
 #include "AddItemMenu.h"
 #include "MovieItem.h"
-#include "UserInputHelper.h"
 #include "CollectionItems/StampItem.h"
-#include "SharedMenuFunctions.h"
 
 
 AddItemMenu::AddItemMenu(CollectionRegistry& collectionRegistry) : 
@@ -23,6 +21,14 @@ _collectionRegistry(collectionRegistry)
 		{
 			"Add Movie",
 			std::bind(&AddItemMenu::addItem<MovieItem>, this)
+		}
+	);
+
+	addMenuOption(
+		"3",
+		{
+			"Add Song",
+			std::bind(&AddItemMenu::addItem<SongItem>, this)
 		}
 	);
 }

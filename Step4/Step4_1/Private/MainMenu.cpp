@@ -67,6 +67,23 @@ _sortItemsMenu(_collectionRegistry){
 		}
 	);
 
+	addMenuOption("8",
+		{
+			"save to file",
+			std::bind(&MainMenu::saveFunc, this)
+
+		}
+	);
+
+	addMenuOption("9",
+		{
+			"load from file",
+			std::bind(&MainMenu::loadFunc, this)
+
+		}
+	);
+
+
 
 	addMenuOption("q", { "Exit", std::bind(&OptionsMenu::setLooping, this, false) });
 }
@@ -85,6 +102,18 @@ void MainMenu::removeItemMenuFunc()
 {
 	int itemId = UserInputHelper::getIntFromUserLoop("Enter item id to remove: ", 0, 9999);
 	_collectionRegistry.removeItem(itemId);
+}
+
+void MainMenu::saveFunc()
+{
+	const std::string filename = UserInputHelper::getStringFromUser("Filename: ");
+	_collectionRegistry.saveReg(filename);
+}
+
+void MainMenu::loadFunc()
+{
+	const std::string filename = UserInputHelper::getStringFromUser("Filename: ");
+	_collectionRegistry.loadReg(filename);
 }
 
 

@@ -1,3 +1,9 @@
+/*
+ * UI for adding items
+ *
+ * Ville Gillström
+ */
+
 #pragma once
 #include "OptionsMenu.h"
 #include "CollectionRegistry.h"

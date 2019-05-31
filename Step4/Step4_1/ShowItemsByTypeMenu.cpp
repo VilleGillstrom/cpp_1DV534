@@ -1,6 +1,8 @@
 #include "ShowItemsByTypeMenu.h"
 #include "CollectionItems/StampItem.h"
 #include "MovieItem.h"
+#include <iostream>
+#include "SongItem.h"
 
 
 ShowItemsByTypeMenu::ShowItemsByTypeMenu(CollectionRegistry& collectionRegistry):
@@ -21,10 +23,18 @@ ShowItemsByTypeMenu::ShowItemsByTypeMenu(CollectionRegistry& collectionRegistry)
 			std::bind(&ShowItemsByTypeMenu::showAllItemsOfType, this, MovieItem::getItemType())
 
 		});
+
+	addMenuOption(
+		"3",
+		{
+			"Song",
+			std::bind(&ShowItemsByTypeMenu::showAllItemsOfType, this, SongItem::getItemType())
+
+		});
 }
 
 
-void ShowItemsByTypeMenu::showAllItemsOfType(const std::string& itemType)
+void ShowItemsByTypeMenu::showAllItemsOfType(const std::string& itemType) const
 {
 	std::vector<BaseCollectionItem*> items = _collectionRegistry.getItemsOfType(itemType);
 	for (auto item : items)

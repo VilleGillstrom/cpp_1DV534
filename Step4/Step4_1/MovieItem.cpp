@@ -2,16 +2,14 @@
 #include <sstream>
 
 
-MovieItem::MovieItem() : MovieItem("","",-1,-1)
+MovieItem::MovieItem() : MovieItem("", "", -1, -1)
 {
 }
 
 MovieItem::MovieItem(const std::string& title, const std::string& studio, int releaseYear, int price):
-	BaseCollectionItem(getItemType(), title), _releaseYear(releaseYear), _studio(studio), _price(price)
+	BaseCollectionItem(title), _releaseYear(releaseYear), _studio(studio), _price(price)
 {
 }
-
-
 
 
 std::map<std::string, std::string> MovieItem::getProperties() const
@@ -47,20 +45,25 @@ void MovieItem::setProperties(std::vector<PropertyString> propertiyStrings)
 	}
 }
 
-bool MovieItem::equalTo(BaseCollectionItem* item) const
+std::string MovieItem::getItemTypeName() const
 {
-	if (MovieItem* mi = dynamic_cast<MovieItem*>(item))
-	{
-		return isSameAs(mi);
-	}
-	return false;
+	return getItemType();
 }
 
-bool MovieItem::isSameAs(MovieItem* item) const
+std::string MovieItem::getItemType()
 {
-	if (MovieItem* mi = dynamic_cast<MovieItem*>(item))
+	return "Movie";
+}
+
+bool MovieItem::equalTo(BaseCollectionItem* item) const
+{
+	if (MovieItem* asMovie = dynamic_cast<MovieItem*>(item))
 	{
-		return isSameAs(item);
+		auto cond = _releaseYear == asMovie->releaseYear();
+		auto cond1 = _price == asMovie->price();
+		auto cond2 = _title == asMovie->title();
+		auto cond3 = _studio == asMovie->studio();
+		return cond && cond1 && cond2 && cond3;
 	}
 	return false;
 }

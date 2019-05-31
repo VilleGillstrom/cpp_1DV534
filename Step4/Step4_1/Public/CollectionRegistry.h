@@ -3,10 +3,7 @@
 #include <vector>
 #include "CollectionItems/BaseCollectionItem.h"
 #include "IItemCollectionStorage.h"
-#include <utility>
-#include "CollectionItems/StampItem.h"
 #include <functional>
-#include <map>
 #include "MovieItem.h"
 
 
@@ -24,8 +21,8 @@ public:
 	bool findItemByItemId(int itemId, std::vector<BaseCollectionItem*>::const_iterator& iter) const;
 	void showItems();
 
-	void saveReg();
-	void loadReg();
+	void saveReg(const std::string& filename);
+	void loadReg(const std::string& filename);
 
 	std::vector<int> getItemConstructors();
 	std::vector<BaseCollectionItem*> getItemsOfType(const std::string& itemType);

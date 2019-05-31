@@ -2,20 +2,22 @@
 #include <iostream>
 #include <sstream>
 #include "CollectionItems/StampItem.h"
+#include <sstream>
 #include "MovieItem.h"
+#include "SongItem.h"
 
 using std::ios;
 using std::cerr;
 
-FileItemCollectionStorage::FileItemCollectionStorage(const std::string& filename) : _itemDelim("###")
+FileItemCollectionStorage::FileItemCollectionStorage() : _itemDelim("###")
 {
-	_filename = filename;
+	
 }
 
 
-void FileItemCollectionStorage::save(const std::vector<BaseCollectionItem*>& items) const
+void FileItemCollectionStorage::save(const std::vector<BaseCollectionItem*>& items, const std::string& filename) const
 {
-	std::ofstream ofs(_filename, ios::trunc);
+	std::ofstream ofs(filename, ios::trunc);
 
 	if (!ofs.good())
 	{
@@ -44,7 +46,7 @@ void FileItemCollectionStorage::save(const std::vector<BaseCollectionItem*>& ite
 	ofs.close();
 }
 
-bool FileItemCollectionStorage::readPropertyString(std::ifstream& ifs, BaseCollectionItem::PropertyString& foo)
+bool FileItemCollectionStorage::readPropertyString(std::ifstream& ifs, BaseCollectionItem::PropertyString& propertyString)
 {
 	std::string line;
 	std::getline(ifs, line);
@@ -59,7 +61,7 @@ bool FileItemCollectionStorage::readPropertyString(std::ifstream& ifs, BaseColle
 	std::string value = line.substr(ind + 1, line.size());
 
 
-	foo = {name, value};
+	propertyString = {name, value};
 	return true;
 }
 
@@ -69,21 +71,22 @@ BaseCollectionItem* FileItemCollectionStorage::newItemFromTypeString(const std::
 	BaseCollectionItem* item = nullptr;
 	if (itemtype == StampItem::getItemType()) { item = new StampItem(); }
 	else if (itemtype == MovieItem::getItemType()) { item = new MovieItem(); }
+	else if (itemtype == SongItem::getItemType()) { item = new SongItem(); }
 	return item;
 }
 
 #include <filesystem>
 
-std::vector<BaseCollectionItem*> FileItemCollectionStorage::load()
+std::vector<BaseCollectionItem*> FileItemCollectionStorage::load(const std::string& filename)
 {
-	std::ifstream ifs(_filename);
+	std::ifstream ifs(filename);
 	std::vector<BaseCollectionItem*> loadedItems;
 
 	if (!ifs.good())
 	{
 		if (errno == ENOENT)
 		{
-			std::cout << "Attempted to load from non-existen file: " << _filename << "\n";
+			std::cout << "Attempted to load from non-existen file: " << filename << "\n";
 		}
 		else
 		{

@@ -1,3 +1,9 @@
+/*
+ * UI for searching for an item
+ *
+ * Ville Gillström
+ */
+
 #pragma once
 #include "OptionsMenu.h"
 #include "CollectionRegistry.h"

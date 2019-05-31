@@ -7,11 +7,7 @@
 ShowItemByIdMenu::ShowItemByIdMenu(CollectionRegistry& collectionRegistry) : _collectionRegistry(collectionRegistry)
 {
 
-	choiceCBMap.insert({
-		'1',
-		{
-		}
-	});
+	
 }
 
 void ShowItemByIdMenu::show()

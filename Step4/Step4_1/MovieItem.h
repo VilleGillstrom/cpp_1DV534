@@ -14,14 +14,11 @@ public:
 	void setProperties(std::vector<PropertyString> propertiyStrings) override;
 
 
-	std::string getItemTypeName() const override { return getItemType(); };
-	static std::string getItemType() { return "Movie"; }
+	std::string getItemTypeName() const override;;
+	static std::string getItemType();
 	bool equalTo(BaseCollectionItem* item) const override;
-	bool isSameAs(MovieItem* item) const;
-
-
-
-
+	
+	/* Setters and getters */
 	int releaseYear() const;
 	void setReleaseYear(int release_year);
 	std::string studio() const;

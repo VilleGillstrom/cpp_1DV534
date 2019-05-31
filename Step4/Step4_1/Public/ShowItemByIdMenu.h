@@ -1,8 +1,12 @@
-#pragma once
-#include <map>
-#include <functional>
+/*
+ * UI for showing item by id
+ *
+ * Ville Gillström
+ */
 
-class CollectionRegistry;
+
+#pragma once
+#include <CollectionRegistry.h>
 class ShowItemByIdMenu
 {
 public:
@@ -10,10 +14,8 @@ public:
 	ShowItemByIdMenu(CollectionRegistry& collectionRegistry);
 	~ShowItemByIdMenu() = default;
 
-
 	void show();
 
-	std::map<char, std::function<void()>> choiceCBMap;
 private:
 	CollectionRegistry& _collectionRegistry;
 

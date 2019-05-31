@@ -1,7 +1,13 @@
+/*
+ * UI for showing items by type
+ * 
+ * Ville Gillström
+ */
+
+
 #pragma once
 #include "OptionsMenu.h"
 #include "CollectionRegistry.h"
-#include <iostream>
 
 class ShowItemsByTypeMenu : public OptionsMenu
 {
@@ -10,8 +16,7 @@ public:
 	~ShowItemsByTypeMenu() = default;
 
 private:
-	void showAllItemsOfType(const std::string& itemType);
-
+	void showAllItemsOfType(const std::string& itemType) const;
 	CollectionRegistry& _collectionRegistry;
 };
 

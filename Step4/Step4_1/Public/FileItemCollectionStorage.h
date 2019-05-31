@@ -1,26 +1,21 @@
 #pragma once
 #include "IItemCollectionStorage.h"
 #include <fstream>
-#include <iostream>
-#include <sstream>
 
 class FileItemCollectionStorage : public IItemCollectionStorage
 {
 public:
-	FileItemCollectionStorage(const std::string& filename);
+	FileItemCollectionStorage();
 	~FileItemCollectionStorage() = default;
 
-
-	void save(const std::vector<BaseCollectionItem*>& items) const override;
-	bool readPropertyString(std::ifstream& ifs, BaseCollectionItem::PropertyString& foo);
+	void save(const std::vector<BaseCollectionItem*>& items, const std::string& filename) const override;				// Save the list into a _filename
 	BaseCollectionItem* newItemFromTypeString(const std::string& itemtype);
-	std::vector<BaseCollectionItem*> load() override;
-
-	
-
+	std::vector<BaseCollectionItem*> load(const std::string& filename) override;
 
 private:
-	std::string _filename;
+	bool readPropertyString(std::ifstream& ifs, BaseCollectionItem::PropertyString& propertyString);   // read a line into a propertystring
+
+
 	const std::string _itemDelim; 
 };
 

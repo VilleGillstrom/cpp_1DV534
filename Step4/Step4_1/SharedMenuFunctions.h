@@ -2,8 +2,13 @@
 #include "CollectionItems/StampItem.h"
 #include "UserInputHelper.h"
 #include "MovieItem.h"
+#include "SongItem.h"
 
-
+/*
+ * Methods that are shared between UI
+ *
+ * Ville Gillström
+ */
 class SharedMenuFunctions
 {
 public:
@@ -26,6 +31,14 @@ public:
 		return item;
 	}
 
+	static SongItem* makeSong()
+	{
+		std::string title = UserInputHelper::getStringFromUser("Title: ");
+		std::string studio = UserInputHelper::getStringFromUser("Singer: ");
+		int playlength = UserInputHelper::getIntFromUserLoop("Playlength: ", 0, 9999);
+		SongItem* item = new SongItem(title, studio, playlength);
+		return item;
+	}
 
 	template <typename T>
 	static T* make()
@@ -38,6 +51,10 @@ public:
 		if (std::is_same<T, MovieItem>::value)
 		{
 			return (T*)(makeMovie());
+		}
+		if (std::is_same<T, SongItem>::value)
+		{
+			return (T*)(makeSong());
 		}
 	}
 };

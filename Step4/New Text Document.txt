@@ -16,3 +16,6 @@ For example, if an option should open another menu the new value in the function
 Similar to the presisten storage the implementation will become unmaintainable as number of items increase. The options are all hard-coded. 
 
 
+Sorting
+A bunch of the functionality in the implementation is built on the properties being represented as string. To sort an item is being asked for a property value by string, such as title. If two items being compared have a property, the properties are compared using the > or < operators (for descending and ascending). If only one have a property it is considered being greater. 
+

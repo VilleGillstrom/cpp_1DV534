@@ -91,14 +91,14 @@ void CollectionRegistry::showItems()
 
 
 
-void CollectionRegistry::saveReg()
+void CollectionRegistry::saveReg(const std::string& filename)
 {
-	_storage->save(_inMemoryItems);
+	_storage->save(_inMemoryItems, filename);
 }
 
-void CollectionRegistry::loadReg()
+void CollectionRegistry::loadReg(const std::string& filename)
 {
-	_inMemoryItems = _storage->load();
+	_inMemoryItems = _storage->load(filename);
 }
 
 std::vector<BaseCollectionItem*> CollectionRegistry::getItemsOfType(const std::string& itemType)

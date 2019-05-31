@@ -1,0 +1,51 @@
+Stamp
+0
+note:My Note
+releaseYear:1932
+title:MyTitle
+###
+Stamp
+1
+note:My Note 2
+releaseYear:2000
+title:MyTitle2
+###
+Movie
+2
+price:20
+releaseYear:2009
+studio:Disney
+title:Avengers
+###
+Movie
+3
+price:20
+releaseYear:1995
+studio:No idea
+title:Titanic
+###
+Movie
+4
+price:20
+releaseYear:2005
+studio:Disney
+title:Avatar
+###
+Song
+5
+playlength:183
+singer:John Lennon
+title:Imagine 
+###
+Song
+6
+playlength:294
+singer:Michael Jackson
+title:Billie Jean
+###
+Song
+7
+playlength:123
+singer:AsSinger
+title:FoTiitle
+###

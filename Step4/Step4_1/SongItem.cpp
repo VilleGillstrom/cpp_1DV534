@@ -7,7 +7,7 @@ SongItem::SongItem() :SongItem("","",-1)
 }
 
 SongItem::SongItem(const std::string& title, const std::string& singer, int playlength):
-	BaseCollectionItem("Song", title), _singer(singer), _playlength(playlength)
+	BaseCollectionItem(title), _singer(singer), _playlength(playlength)
 {
 }
 

@@ -21,6 +21,14 @@ _collectionRegistry(collectionRegistry)
 			std::bind(&SearchItemMenu::search<MovieItem>, this)
 		}
 	);
+
+	addMenuOption(
+		"3",
+		{
+			"Search Song",
+			std::bind(&SearchItemMenu::search<SongItem>, this)
+		}
+	);
 }
 
 

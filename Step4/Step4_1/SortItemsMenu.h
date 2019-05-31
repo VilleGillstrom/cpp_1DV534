@@ -1,3 +1,10 @@
+
+/*
+ * UI for sorting items by id
+ *
+ * Ville Gillström
+ */
+
 #pragma once
 #include "OptionsMenu.h"
 #include "CollectionRegistry.h"
